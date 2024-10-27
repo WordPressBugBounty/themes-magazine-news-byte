@@ -104,9 +104,6 @@ function magnb_base_enqueue_scripts() {
 	$scriptdata = hoot_data( 'scriptdata' );
 	if ( !empty( $scriptdata ) && is_array( $scriptdata ) )
 		wp_localize_script( 'hoverIntent', 'hootData', $scriptdata );
-	// Temp Fix WP 5.5 => localize replaces 'jquery' with 'jquery-core', however in 5.5 jquery is loaded with id 'jquery' and not 'jquery-core' (unless
-	// 'Enable jQuery Migrate Helper' plugin is activated). Hence use hoverIntent instead of 'jquery' (aka jquery-core) till we get a permanent fix
-	// @see https://stackoverflow.com/questions/29723872/
 
 }
 endif;

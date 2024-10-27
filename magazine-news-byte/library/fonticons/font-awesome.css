@@ -4628,7 +4628,7 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
   font-display: swap;
   src: url("webfonts/fa-brands-ext.eot");
-  src: url("webfonts/fa-brands-ext.eot?#iefix") format("embedded-opentype"), url("webfonts/fa-brands-ext.woff2") format("woff2"), url("webfonts/fa-brands-ext.woff") format("woff"), url("webfonts/fa-brands-ext.ttf") format("truetype"), url("webfonts/fa-brands-ext.svg#fontawesome") format("svg"); }
+  src: url("webfonts/fa-brands-ext.eot?#iefix") format("embedded-opentype"), url("webfonts/fa-brands-ext.woff") format("woff"), url("webfonts/fa-brands-ext.ttf") format("truetype"), url("webfonts/fa-brands-ext.svg#fontawesome") format("svg"); }
 
 .fa-square-x-twitter:before {
   font-family: 'Font Awesome 5 Brands Ext';

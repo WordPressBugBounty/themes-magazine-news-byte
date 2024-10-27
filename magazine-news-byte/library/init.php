@@ -106,6 +106,8 @@ function hoot_lib_core() {
 	require_once( hoot_data()->libdir . 'sanitization.php' );
 	/* Load Helper functions */
 	require_once( hoot_data()->libdir . 'helpers.php' );
+	/* Load Helper functions */
+	require_once( hoot_data()->libdir . 'fonts.php' );
 	/* Load Media functions */
 	require_once( hoot_data()->libdir . 'media.php' );
 	/* Load functions hooked to head */

@@ -1,0 +1,42 @@
+#hoot-welcome-msg { padding-left: 0; margin: 5px 0 25px; }
+.hoot-welcome-msg {}
+.hoot-welcome-content { display: flex; align-items: center; }
+
+.hoot-welcome-img {
+	display: block;
+	width: 275px; min-height: 145px; align-self: stretch;
+	flex-shrink: 0;
+	overflow: hidden;
+	box-shadow: 0 0 6px 1px rgba(200,200,200,0.5);
+	position: relative;
+}
+.hoot-welcome-img--large { width: 350px; }
+.hoot-welcome-screenshot {
+	width: 100%;
+	position: absolute; top: 0; left: 0;
+	animation: scrollImg 18s ease-in-out infinite;
+	/* animation-delay: 1s; */
+	animation-play-state: running;
+}
+.hoot-welcome-screenshot:hover { animation-play-state: paused; }
+@keyframes scrollImg {
+	0%  { transform: translateY(0); }
+	10%  { transform: translateY(0); }
+	90% { transform: translateY(calc(-100% + 250px)); }
+	95% { transform: translateY(calc(-100% + 250px)); }
+	98% { transform: translateY(0); }
+}
+
+.hoot-welcome-text {
+	flex-grow: 1;
+	padding-left: 40px;
+	margin: 20px 0 25px;
+}
+.hoot-welcome-text p { font-size: 14px; max-width: 660px; }
+.hoot-welcome-text a { font-weight: 600; }
+.button.hoot-welcome-btn { margin-top: 5px; font-size: 14px; line-height: 1.8em; padding: 10px 35px; }
+.button.hoot-btn-processplugin.updating-message:before { color: #a7a7a7; }
+.button.hoot-welcome-btn + div.error { margin-top: 15px; }
+.hoot-welcome-text .hoot-welcome-note { font-size: 13px; margin-top: -0.5em; color: #4b7ea7; font-style: italic; font-weight: 500; }
+
+

@@ -1,36 +1,7 @@
 <?php
 /**
- * About/Welcome page
- *
- * @package    Magazine NewsByte
- * @subpackage Theme
+ * About page
  */
-
-/**
- * Set Theme About Page Tags
- *
- * @since 2.9
- * @access public
- * @return mixed
- */
-function magnb_abouttag( $index = 'slug' ) {
-	static $tags;
-	if ( empty( $tags ) ) {
-		$tags = wp_parse_args( apply_filters( 'magnb_abouttags', array() ), array(
-			'slug' => 'magazine-news-byte',
-			'name' => __( 'Magazine NewsByte', 'magazine-news-byte' ),
-			'vers' => hoot_data( 'template_version' ),
-			'shot' => ( file_exists( hoot_data()->template_dir . 'screenshot.jpg' ) ) ? hoot_data()->template_uri . 'screenshot.jpg' : (
-						( file_exists( hoot_data()->template_dir . 'screenshot.png' ) ) ? hoot_data()->template_uri . 'screenshot.png' : ''
-						),
-			) );
-		$tags['name'] = esc_html( $tags['name'] );
-		$tags['slug'] = sanitize_html_class( $tags['slug'] );
-		$tags['vers'] = sanitize_text_field( $tags['vers'] );
-		$tags['shot'] = esc_url( $tags['shot'] );
-	}
-	return ( ( isset( $tags[ $index ] ) ) ? $tags[ $index ] : '' );
-}
 
 /**
  * Sets up the Appearance Subpage
@@ -42,11 +13,12 @@ function magnb_abouttag( $index = 'slug' ) {
 function magnb_add_appearance_subpage() {
 
 	add_theme_page(
-		magnb_abouttag( 'name' ), // Page Title
-		__( 'About Theme Options', 'magazine-news-byte' ), // Menu Title
+		magnb_abouttag( 'label' ), // Page Title
+		magnb_abouttag( 'label' ), // Menu Title
 		'edit_theme_options', // capability
 		magnb_abouttag( 'slug' ) . '-welcome', // menu-slug
-		'magnb_appearance_subpage' // function name
+		'magnb_appearance_subpage', // function name
+		1 // position
 		);
 
 	add_action( 'admin_enqueue_scripts', 'magnb_admin_enqueue_about_styles' );
@@ -54,62 +26,6 @@ function magnb_add_appearance_subpage() {
 }
 /* Add the admin setup function to the 'admin_menu' hook. */
 add_action( 'admin_menu', 'magnb_add_appearance_subpage' );
-
-/**
- * Add a welcome notice if not already dismissed
- *
- * @since 1.0
- * @access public
- * @return void
- */
-function magnb_welcome_notice(){
-	$slug = magnb_abouttag( 'slug' );
-	if ( isset( $_GET['page'] ) && $_GET['page'] == "{$slug}-welcome" )
-		return;
-	if ( ! get_option( "{$slug}-dismiss-welcome" ) ) {
-		add_action( 'admin_notices', 'magnb_add_welcome_notice' );
-	}
-}
-add_action( 'admin_head', 'magnb_welcome_notice' );
-
-/**
- * Display admin notice
- *
- * @since 1.0
- * @access public
- * @return void
- */
-function magnb_add_welcome_notice() {
-	$slug = magnb_abouttag( 'slug' );
-	$themename = magnb_abouttag( 'name' );
-	?>
-	<div id="hoot-welcome-msg" class="notice notice-success is-dismissible">
-		<p><?php
-			/* Translators: 1 is the theme name, 2 is the link start markup, 3 is link markup end */
-			printf( esc_html__( 'Thank you for choosing %1$s! To get started and fully take advantage of our theme, please make sure you visit the welcome page for the %2$sQuick Start Guide%3$s.', 'magazine-news-byte' ), $themename, '<a href="' . esc_url( admin_url( "themes.php?page={$slug}-welcome&tab=qstart" ) ) . '">', '</a>' );
-			?></p>
-		<p><?php
-			/* Translators: 1 is the theme name, 2 is the link start markup, 3 is link markup end */
-			printf( esc_html__( '%2$sGet started with %1$s%3$s', 'magazine-news-byte' ), $themename, '<a class="button-secondary" href="' . esc_url( admin_url( "themes.php?page={$slug}-welcome&tab=qstart" ) ) . '">', '</a>' );
-			?></p>
-	</div>
-	<?php
-}
-
-/**
- * Ajax callback to set dismissable notice
- *
- * @since 1.0
- * @access public
- * @return void
- */
-function magnb_dismiss_welcome_notice() {
-	$slug = magnb_abouttag( 'slug' );
-	check_ajax_referer( 'dismiss-hoottheme-welcome', 'nonce' );
-	update_option( "{$slug}-dismiss-welcome", 1 );
-	wp_die();
-}
-add_action( 'wp_ajax_magnb_dismiss_welcome_notice', 'magnb_dismiss_welcome_notice' );
 
 /**
  * Enqueue CSS
@@ -120,14 +36,10 @@ add_action( 'wp_ajax_magnb_dismiss_welcome_notice', 'magnb_dismiss_welcome_notic
  */
 function magnb_admin_enqueue_about_styles( $hook ) {
 	$slug = magnb_abouttag( 'slug' );
-	if ( $hook == "appearance_page_{$slug}-welcome" )
+	if ( $hook === "appearance_page_{$slug}-welcome" ) {
 		wp_enqueue_style( 'hoot-admin-about', hoot_data()->incuri . 'admin/css/about.css', array(),  hoot_data()->hoot_version );
-	wp_enqueue_script( 'hoot-admin-about', hoot_data()->incuri . 'admin/js/about.js', array( 'jquery' ),  hoot_data()->hoot_version, true );
-	wp_localize_script( 'hoot-admin-about', 'hoot_dismissible_notice', array(
-							'ajax_url' => esc_url( admin_url( 'admin-ajax.php' ) ),
-							'ajax_action' => 'magnb_dismiss_welcome_notice',
-							'nonce' => wp_create_nonce( 'dismiss-hoottheme-welcome' ),
-						) );
+		wp_enqueue_script( 'hoot-admin-about', hoot_data()->incuri . 'admin/js/about.js', array( 'jquery' ),  hoot_data()->hoot_version, true );
+	}
 }
 
 /**
@@ -138,19 +50,24 @@ function magnb_admin_enqueue_about_styles( $hook ) {
  * @return void
  */
 function magnb_appearance_subpage() {
-	$activetab = 'upsell';
 	$slug = magnb_abouttag( 'slug' );
 	$themename = magnb_abouttag( 'name' );
+	$themelabel = magnb_abouttag( 'label' );
 	$version = magnb_abouttag( 'vers' );
 	$screenshot = magnb_abouttag( 'shot' );
-	if ( !empty( $_GET['tab'] ) )
-		$activetab = ( $_GET['tab'] == 'import' ) ? 'import' : ( ( $_GET['tab'] == 'qstart' ) ? 'qstart' : $activetab );
+
+	$hasupsell = apply_filters( 'magnb_load_upsell', true );
+	$default_tabs = array( 'qstart', 'plugins' );
+	if ( $hasupsell ) $default_tabs[] = 'upsell';
+	$availabletabs = apply_filters( 'magnb_about_load_tabs', $default_tabs );
+	if ( ! is_array( $availabletabs ) ) $availabletabs = $default_tabs;
+	$activetab = !empty( $_GET['tab'] ) && in_array( $_GET['tab'], $availabletabs ) ? $_GET['tab'] : ( $hasupsell ? 'upsell' : 'qstart' );
 	?>
 	<div class="wrap">
 
 		<h1 class="hoot-about-title"><?php
-			/* Translators: 1 is the theme name, 2 is the theme version */
-			printf( esc_html__( 'About %1$s %2$s', 'magazine-news-byte' ), $themename, $version );
+			/* Translators: 1 is the theme name */
+			printf( esc_html__( 'About %1$s', 'magazine-news-byte' ), $themelabel );
 			?></h1>
 
 		<div id="hoot-about-sub" class="hoot-about-sub">
@@ -161,25 +78,15 @@ function magnb_appearance_subpage() {
 					printf( esc_html__( '%1$s is a multipurpose highly flexible WordPress theme built on a SEO friendly framework with fast loading speed. It comes with multiple Theme Customizer options, various blog layouts, WooCommerce support etc among many other features.', 'magazine-news-byte' ), $themename );
 					?></p>
 				<p class="hoot-about-textlinks">
-					<a class="button button-primary" href="https://wphoot.com/themes/<?php echo $slug; ?>/" target="_blank"><span class="dashicons dashicons-dashboard"></span> <?php esc_html_e( 'View Premium', 'magazine-news-byte' ) ?></a>
-					<a class="button" href="https://demo.wphoot.com/<?php echo $slug; ?>/" target="_blank"><span class="dashicons dashicons-welcome-view-site"></span> <?php esc_html_e( 'View Demo', 'magazine-news-byte' ) ?></a>
-					<a class="button" href="https://wphoot.com/support/<?php echo $slug; ?>/" target="_blank"><span class="dashicons dashicons-editor-aligncenter"></span> <?php esc_html_e( 'Documentation', 'magazine-news-byte' ) ?></a>
+					<?php if ( $hasupsell ) : ?>
+					<a class="button button-primary" href="https://wphoot.com/themes/magazine-news-byte/" target="_blank"><span class="dashicons dashicons-dashboard"></span> <?php esc_html_e( 'View Premium', 'magazine-news-byte' ) ?></a>
+					<?php endif; ?>
+					<a class="button" href="https://demo.wphoot.com/JNES@SLUG/" target="_blank"><span class="dashicons dashicons-welcome-view-site"></span> <?php esc_html_e( 'View Demo', 'magazine-news-byte' ) ?></a>
+					<a class="button" href="https://wphoot.com/support/magazine-news-byte/" target="_blank"><span class="dashicons dashicons-editor-aligncenter"></span> <?php esc_html_e( 'Documentation', 'magazine-news-byte' ) ?></a>
 					<a class="button" href="https://wphoot.com/support/" target="_blank"><span class="dashicons dashicons-sos"></span> <?php esc_html_e( 'Get Support', 'magazine-news-byte' ) ?></a>
-					<a class="button" href="https://wordpress.org/support/theme/<?php echo $slug; ?>/reviews/#new-post" target="_blank"><span class="dashicons dashicons-thumbs-up"></span> <?php esc_html_e( 'Rate Us', 'magazine-news-byte' ) ?></a>
+					<a class="button" href="https://wordpress.org/support/theme/JNES@SLUG/reviews/#new-post" target="_blank"><span class="dashicons dashicons-thumbs-up"></span> <?php esc_html_e( 'Rate Us', 'magazine-news-byte' ) ?></a>
 				</p>
 				<?php do_action( 'magnb_theme_after_about_textlinks', $slug ); ?>
-				<?php /*
-				<div class="hoot-about-notice2">
-					<h3><?php esc_html_e( '1 Click Demo Installation', 'magazine-news-byte' ) ?></h3>
-					<p><?php
-						/* Translators: The %s are placeholders for HTML, so the order can't be changed. *//*
-						printf( esc_html__( 'Use the OCDI plugin to install demo content with a single click to make your site look exactly like the %1$sDemo Site%2$s.%3$sNew users often find it easier to edit existing content rather than starting from scratch.', 'magazine-news-byte' ), '<a href="https://demo.wphoot.com/' . $slug . '/" target="_blank">', '</a>', '<br />' );
-					?></p>
-					<p class="hoot-about-textlinks">
-						<a class="button" href="https://wphoot.com/support/<?php echo $slug; ?>/#docs-section-demo-content-free" target="_blank"><span class="dashicons dashicons-art"></span> <?php esc_html_e( 'Install Demo Content', 'magazine-news-byte' ) ?></a>
-					</p>
-				</div>
-				*/ ?>
 			</div>
 			<div class="clear"></div>
 		</div><!-- .hoot-about-sub -->
@@ -187,23 +94,27 @@ function magnb_appearance_subpage() {
 		<div class="hoot-abouttabs">
 
 			<h2 id="nav-tabs" class="nav-tab-wrapper">
-				<span class="nav-tab nav-upsell <?php if ( $activetab == 'upsell' ) echo 'nav-tab-active'; ?>" data-tabid="upsell"><?php esc_html_e( 'Premium Options', 'magazine-news-byte' ) ?></span>
-				<?php do_action( 'magnb_theme_after_nav_tab_upsell', $slug, $activetab ); ?>
-				<span class="nav-tab nav-qstart <?php if ( $activetab == 'qstart' ) echo 'nav-tab-active'; ?>" data-tabid="qstart"><?php esc_html_e( 'Quick Start Guide', 'magazine-news-byte' ) ?></span>
+				<?php if ( $hasupsell ) : ?>
+				<span class="nav-tab nav-upsell <?php if ( $activetab === 'upsell' ) echo 'nav-tab-active'; ?>" data-tabid="upsell"><?php esc_html_e( 'Premium Options', 'magazine-news-byte' ) ?></span>
+				<?php endif; ?>
+				<span class="nav-tab nav-qstart <?php if ( $activetab === 'qstart' ) echo 'nav-tab-active'; ?>" data-tabid="qstart"><?php esc_html_e( 'Quick Start Guide', 'magazine-news-byte' ) ?></span>
+				<span class="nav-tab nav-plugins <?php if ( $activetab === 'plugins' ) echo 'nav-tab-active'; ?>" data-tabid="plugins"><?php esc_html_e( 'Theme Plugins', 'magazine-news-byte' ) ?></span>
+				<?php do_action( 'magnb_about_tabs', $activetab ); ?>
 			</h2>
 
+			<?php if ( $hasupsell ) : ?>
 			<div id="hoot-upsell" class="hoot-upsell hoot-tab <?php if ( $activetab == 'upsell' ) echo 'hoot-tab-active'; ?>">
 				<h2 class="centered allcaps"><?php
 					/* Translators: The %s are placeholders for HTML, so the order can't be changed. */
-					printf( esc_html__( 'Upgrade to %2$s%1$s %3$sPremium%4$s%5$s', 'magazine-news-byte' ), $themename, '<span>', '<strong>', '</strong>', '</span>' );
+					printf( esc_html__( 'Do more with %2$s%1$s %3$sPremium%4$s%5$s', 'magazine-news-byte' ), $themename, '<span>', '<strong>', '</strong>', '</span>' );
 					?></h2>
 				<p class="hoot-tab-intro centered"><?php
 					/* Translators: The %s are placeholders for HTML, so the order can't be changed. */
 					printf( esc_html__( 'If you have enjoyed using %1$s, you are going to love %2$s%1$s Premium%3$s.%4$sIt is a robust upgrade to %1$s that gives you many useful features.', 'magazine-news-byte' ), $themename, '<strong>', '</strong>', '<br />' );
 					?></p>
 				<p class="hoot-tab-cta centered">
-					<a class="button button-secondary secondary-cta" href="https://demo.wphoot.com/<?php echo $slug; ?>/" target="_blank"><span class="dashicons dashicons-welcome-view-site"></span> <?php esc_html_e( 'View Demo Site', 'magazine-news-byte' ) ?></a>
-					<a class="button button-primary primary-cta" href="https://wphoot.com/themes/<?php echo $slug; ?>/" target="_blank"><span class="dashicons dashicons-dashboard"></span> <?php
+					<a class="button button-secondary secondary-cta" href="https://demo.wphoot.com/JNES@SLUG/" target="_blank"><span class="dashicons dashicons-welcome-view-site"></span> <?php esc_html_e( 'View Demo Site', 'magazine-news-byte' ) ?></a>
+					<a class="button button-primary primary-cta" href="https://wphoot.com/themes/magazine-news-byte/" target="_blank"><span class="dashicons dashicons-dashboard"></span> <?php
 						/* Translators: 1 is the theme name */
 						printf( esc_html__( 'Buy %1$s Premium', 'magazine-news-byte' ), $themename );
 						?></a>
@@ -211,16 +122,15 @@ function magnb_appearance_subpage() {
 				<div class="hoot-tab-sub"><div class="hoot-tab-subinner">
 					<?php magnb_tabsections( 'features' ); ?>
 					<div class="tabsection hoot-tab-cta centered">
-						<a class="button button-secondary secondary-cta" href="https://demo.wphoot.com/<?php echo $slug; ?>/" target="_blank"><span class="dashicons dashicons-welcome-view-site"></span> <?php esc_html_e( 'View Demo Site', 'magazine-news-byte' ) ?></a>
-						<a class="button button-primary primary-cta" href="https://wphoot.com/themes/<?php echo $slug; ?>/" target="_blank"><span class="dashicons dashicons-dashboard"></span> <?php
+						<a class="button button-secondary secondary-cta" href="https://demo.wphoot.com/JNES@SLUG/" target="_blank"><span class="dashicons dashicons-welcome-view-site"></span> <?php esc_html_e( 'View Demo Site', 'magazine-news-byte' ) ?></a>
+						<a class="button button-primary primary-cta" href="https://wphoot.com/themes/magazine-news-byte/" target="_blank"><span class="dashicons dashicons-dashboard"></span> <?php
 							/* Translators: 1 is the theme name */
 							printf( esc_html__( 'Buy %1$s Premium', 'magazine-news-byte' ), $themename );
 							?></a>
 					</div>
 				</div></div><!-- .hoot-tab-sub -->
 			</div><!-- #hoot-upsell -->
-
-			<?php do_action( 'magnb_theme_after_hoot_upsell', $slug, $activetab ); ?>
+			<?php endif; ?>
 
 			<div id="hoot-qstart" class="hoot-qstart hoot-tab <?php if ( $activetab == 'qstart' ) echo 'hoot-tab-active'; ?>">
 				<h2 class="centered allcaps"><span class="dashicons dashicons-clock"></span> <?php esc_html_e( 'Quick Start Guide', 'magazine-news-byte' ); ?></h2>
@@ -229,17 +139,102 @@ function magnb_appearance_subpage() {
 					printf( esc_html__( 'Follow these steps to quickly start developing your site.%1$sTo read the full documentation, or to get support from one of our support ninjas, click the buttons below.', 'magazine-news-byte' ), '<br />' );
 					?></p>
 				<p class="hoot-tab-cta centered">
-					<a class="button button-primary primary-cta" href="https://wphoot.com/support/<?php echo $slug; ?>/" target="_blank"><span class="dashicons dashicons-editor-aligncenter"></span> <?php esc_html_e( 'View Full Documentation', 'magazine-news-byte' ) ?></a>
+					<a class="button button-primary primary-cta" href="https://wphoot.com/support/magazine-news-byte/" target="_blank"><span class="dashicons dashicons-editor-aligncenter"></span> <?php esc_html_e( 'View Full Documentation', 'magazine-news-byte' ) ?></a>
 					<a class="button button-secondary secondary-cta" href="https://wphoot.com/support/" target="_blank"><span class="dashicons dashicons-sos"></span> <?php esc_html_e( 'Get Support', 'magazine-news-byte' ) ?></a>
 				</p>
 				<div class="hoot-tab-sub hoot-qstart-sub"><div class="hoot-tab-subinner">
 					<?php magnb_tabsections( 'quickstart' ); ?>
 					<div class="tabsection hoot-tab-cta centered">
-						<a class="button button-primary primary-cta" href="https://wphoot.com/support/<?php echo $slug; ?>/" target="_blank"><span class="dashicons dashicons-editor-aligncenter"></span> <?php esc_html_e( 'View Full Documentation', 'magazine-news-byte' ) ?></a>
+						<a class="button button-primary primary-cta" href="https://wphoot.com/support/magazine-news-byte/" target="_blank"><span class="dashicons dashicons-editor-aligncenter"></span> <?php esc_html_e( 'View Full Documentation', 'magazine-news-byte' ) ?></a>
 						<a class="button button-secondary secondary-cta" href="https://wphoot.com/support/" target="_blank"><span class="dashicons dashicons-sos"></span> <?php esc_html_e( 'Get Support', 'magazine-news-byte' ) ?></a>
 					</div>
 				</div></div><!-- .hoot-tab-sub -->
 			</div><!-- #hoot-qstart -->
+
+			<div id="hoot-plugins" class="hoot-plugins hoot-tab <?php if ( $activetab == 'plugins' ) echo 'hoot-tab-active'; ?>">
+
+				<div class="wp-list-table widefat plugin-install">
+					<div id="the-list">
+
+						<div class="plugin-card">
+							<div class="plugin-card-top">
+								<div class="name column-name">
+									<h3><?php esc_html_e( 'HootKit', 'magazine-news-byte' ) ?><img src="https://s.w.org/plugins/geopattern-icon/hootkit.svg" class="plugin-icon" alt=""></h3>
+								</div>
+								<div class="action-links">
+									<ul class="plugin-action-buttons">
+										<li><?php
+											if ( class_exists( 'HootKit' ) ) {
+												echo '<button type="button" class="button button-disabled" disabled="disabled">' . esc_html( 'Active', 'magazine-news-byte' ) . '</button>';
+											} else {
+												echo '<a href="#" class="hoot-btn-processplugin button button-primary hoot-btn-smallmsg" data-plugin="hootkit">';
+													if ( file_exists( WP_PLUGIN_DIR . '/hootkit/hootkit.php' ) )
+														esc_html_e( 'Activate', 'magazine-news-byte' );
+													else
+														esc_html_e( 'Install', 'magazine-news-byte' );
+												echo '</a>';
+											}
+										?></li>
+										<li><?php
+											/* Translators: The %s are placeholders for HTML, so the order can't be changed. */
+											echo sprintf( esc_html__( '%1$sView Details%2$s', 'magazine-news-byte' ), '<a href="https://wordpress.org/plugins/hootkit/" target="_blank">', '</a>' );
+										?></li>
+									</ul>
+								</div>
+								<div class="desc column-description">
+									<p><?php esc_html_e( 'This plugin adds widgets and sliders developed and styled specifically for the theme.', 'magazine-news-byte' ); ?></p>
+									<p class="authors"><cite><?php
+										/* Translators: The %s are placeholders for HTML, so the order can't be changed. */
+										echo sprintf( esc_html__( 'By %1$swpHoot%2$s', 'magazine-news-byte' ), '<a href="https://wphoot.com">', '</a>' );
+									?></cite></p>
+								</div>
+							</div>
+						</div>
+
+						<?php $import_config = apply_filters( 'hootimport_theme_config', array() ); // Hoot Import has been configured for active theme
+						if ( ! empty( $import_config ) ) : ?>
+						<div class="plugin-card">
+							<div class="plugin-card-top">
+								<div class="name column-name">
+									<h3><?php esc_html_e( 'Hoot Import', 'magazine-news-byte' ) ?><img src="https://s.w.org/plugins/geopattern-icon/hoot-import.svg" class="plugin-icon" alt=""></h3>
+								</div>
+								<div class="action-links">
+									<ul class="plugin-action-buttons">
+										<li><?php
+											if ( class_exists( 'HootImport' ) ) {
+												echo '<button type="button" class="button button-disabled" disabled="disabled">' . esc_html( 'Active', 'magazine-news-byte' ) . '</button>';
+											} else {
+												echo '<a href="#" class="hoot-btn-processplugin button button-primary hoot-btn-smallmsg">';
+													if ( file_exists( WP_PLUGIN_DIR . '/hoot-import/hoot-import.php' ) )
+														esc_html_e( 'Activate', 'magazine-news-byte' );
+													else
+														esc_html_e( 'Install', 'magazine-news-byte' );
+												echo '</a>';
+											}
+										?></li>
+										<li><?php
+											/* Translators: The %s are placeholders for HTML, so the order can't be changed. */
+											echo sprintf( esc_html__( '%1$sView Details%2$s', 'magazine-news-byte' ), '<a href="https://wordpress.org/plugins/hoot-import/" target="_blank">', '</a>' );
+										?></li>
+									</ul>
+								</div>
+								<div class="desc column-description">
+									<p><?php esc_html_e( 'This plugin helps you import the demo data to help you get familiar with the theme.', 'magazine-news-byte' ); ?></p>
+									<p class="authors"><cite><?php
+										/* Translators: The %s are placeholders for HTML, so the order can't be changed. */
+										echo sprintf( esc_html__( 'By %1$swpHoot%2$s', 'magazine-news-byte' ), '<a href="https://wphoot.com">', '</a>' );
+									?></cite></p>
+								</div>
+							</div>
+						</div>
+						<?php endif; ?>
+
+					</div>
+				</div>
+
+			</div><!-- #hoot-plugins -->
+
+			<?php do_action( 'magnb_about_tabcontent', $activetab ); ?>
 
 
 		</div><!-- .hoot-abouttabs -->
@@ -256,7 +251,7 @@ function magnb_appearance_subpage() {
  * @return mixed
  */
 function magnb_tabsections( $string ) {
-	if ( in_array( $string, array( 'features', 'importsteps', 'quickstart' ) ) ) :
+	if ( in_array( $string, array( 'features', 'quickstart' ) ) ) :
 		$features = magnb_upstrings( $string );
 		if ( !empty( $features ) && is_array( $features ) ) :
 			foreach ( $features as $key => $feature ) :
@@ -271,7 +266,7 @@ function magnb_tabsections( $string ) {
 
 					<?php if ( $style == 'hero-top' || $style == 'hero-bottom' ) :
 						if ( $style == 'hero-top' ) : ?>
-							<h4 class="heading"><?php echo $feature['name']; ?></h4>
+							<h4 class="heading"><?php echo $feature['name']; ?><cite><span><?php esc_html_e( '* Premium Feature', 'magazine-news-byte' ) ?></span></cite></h4>
 							<?php if ( !empty( $feature['desc'] ) ) echo '<div class="tabsection-hero-text">' . $feature['desc'] . '</div>'; ?>
 						<?php endif; ?>
 						<?php if ( !empty( $feature['img'] ) ) : ?>
@@ -280,7 +275,7 @@ function magnb_tabsections( $string ) {
 							</div>
 						<?php endif; ?>
 						<?php if ( $style == 'hero-bottom' ) : ?>
-							<h4 class="heading"><?php echo $feature['name']; ?></h4>
+							<h4 class="heading"><?php echo $feature['name']; ?><cite><span><?php esc_html_e( '* Premium Feature', 'magazine-news-byte' ) ?></span></cite></h4>
 							<?php if ( !empty( $feature['desc'] ) ) echo '<div class="tabsection-hero-text">' . $feature['desc'] . '</div>'; ?>
 						<?php endif; ?>
 
@@ -291,7 +286,7 @@ function magnb_tabsections( $string ) {
 							</div>
 							<div class="tabsection-side-textblock">
 								<?php if ( !empty( $feature['name'] ) ) : ?>
-									<h4 class="heading"><?php echo $feature['name']; ?></h4>
+									<h4 class="heading"><?php echo $feature['name']; ?><cite><span><?php esc_html_e( '* Premium Feature', 'magazine-news-byte' ) ?></span></cite></h4>
 								<?php endif; ?>
 								<?php if ( !empty( $feature['desc'] ) ) echo '<div class="tabsection-side-text">' . $feature['desc'] . '</div>'; ?>
 							</div>
@@ -309,7 +304,7 @@ function magnb_tabsections( $string ) {
 										</div>
 									<?php endif;
 									if ( !empty( $block['name'] ) ) : ?>
-										<h4 class="heading"><?php echo $block['name']; ?></h4>
+										<h4 class="heading"><?php echo $block['name']; ?><cite><span><?php esc_html_e( '* Premium Feature', 'magazine-news-byte' ) ?></span></cite></h4>
 									<?php endif;
 									if ( !empty( $block['desc'] ) ) echo '<div class="tabsection-aside-text">' . $block['desc'] . '</div>';
 								echo '</div>';
@@ -326,7 +321,7 @@ function magnb_tabsections( $string ) {
 						<?php endif; ?>
 						<div class="tabsection-std-textblock <?php if ( $style == 'img-bottom' ) echo 'attop'; else echo 'atbottom'; ?>">
 							<?php if ( !empty( $feature['name'] ) ) : ?>
-								<div class="tabsection-std-heading"><h4 class="heading"><?php echo $feature['name']; ?></h4></div>
+								<div class="tabsection-std-heading"><h4 class="heading"><?php echo $feature['name']; ?><cite><span><?php esc_html_e( '* Premium Feature', 'magazine-news-byte' ) ?></span></cite></h4></div>
 							<?php endif; ?>
 							<?php if ( !empty( $feature['desc'] ) ) echo '<div class="tabsection-std-text">' . $feature['desc'] . '</div>'; ?>
 							<div class="clear"></div>
@@ -354,10 +349,8 @@ function magnb_tabsections( $string ) {
  */
 function magnb_upstrings( $string ) {
 
-	$features = $importsteps = $quickstart = array();
+	$features = $quickstart = array();
 	$imagepath =  esc_url( hoot_data()->incuri . 'admin/images/' );
-	$ocdilink = ( class_exists( 'HootKit' ) ) ? admin_url( 'themes.php?page=hootkit-content-install' ) : '';
-	$tgmplink = ( class_exists( 'HootKit' ) ) ? '' : admin_url( 'themes.php?page=tgmpa-install-plugins' );
 	$slug = magnb_abouttag( 'slug' );
 	$themename = magnb_abouttag( 'name' );
 
@@ -491,41 +484,11 @@ function magnb_upstrings( $string ) {
 
 	$features[] = array(
 		/* Translators: The %s are placeholders for HTML, so the order can't be changed. */
-		'name' => sprintf( esc_html__( 'Premium %1$sPriority Support', 'magazine-news-byte' ), '<br />' ),
+		'name' => esc_html__( 'Priority Support', 'magazine-news-byte' ),
 		/* Translators: The %s are placeholders for HTML, so the order can't be changed. */
 		'desc' => sprintf( esc_html__( 'Need help setting up %1$s? Upgrading to %1$s Premium gives you prioritized support. We have a growing support team ready to help you with your questions.%2$sNeed small modifications? If you are not a developer yourself, you can count on our support staff to help you with CSS snippets to get the look you are after. Best of all, your changes will persist across updates.', 'magazine-news-byte' ), $themename, '<hr>' ),
 		'img' => $imagepath . 'premium-support.jpg',
 		// 'style' => 'side',
-		);
-
-	if ( class_exists( 'HootKit' ) ) {
-		/* Translators: The %s are placeholders for HTML, so the order can't be changed. */
-		$idesc = sprintf( esc_html__( '%1$sInstall the HootKit plugin to activate the One Click Demo Install.%2$s%3$sInstalled%4$s', 'magazine-news-byte' ), '<span class="strikeout">', '</span>' ,'<hr><h4 class="okgreen"><span class="dashicons dashicons-yes"></span>', '</h4>' );
-	} else {
-		/* Translators: The %s are placeholders for HTML, so the order can't be changed. */
-		$idesc = sprintf( esc_html__( 'Install the HootKit plugin to activate the One Click Demo Install.%1$sInstall HootKit plugin%2$s', 'magazine-news-byte' ), '<hr><a class="button button-primary" href="' . esc_url( $tgmplink ) . '">', '</a>' );
-	}
-	$importsteps[] = array(
-		'name' => esc_html__( 'Step 1', 'magazine-news-byte' ),
-		'desc' => $idesc,
-		'style' => 'hero-top',
-		);
-
-	$ilink = ( $ocdilink ) ? '<a href="' . esc_url( $ocdilink ) . '">' : '<strong>';
-	$ilinkend = ( $ocdilink ) ? '</a>' : '</strong>';
-	$importsteps[] = array(
-		'name' => esc_html__( 'Step 2', 'magazine-news-byte' ),
-		/* Translators: The %s are placeholders for HTML, so the order can't be changed. */
-		'desc' => sprintf( esc_html__( 'Go to the %1$sInstall Theme Content%2$s page under the %3$sAppearance Menu%4$s', 'magazine-news-byte' ), $ilink, $ilinkend, '<strong>', '</strong>' ),
-		'style' => 'hero-top',
-		);
-
-	$importsteps[] = array(
-		'name' => esc_html__( 'Step 3', 'magazine-news-byte' ),
-		/* Translators: The %s are placeholders for HTML, so the order can't be changed. */
-		'desc' => sprintf( esc_html__( 'Click the %1$sInstall Demo Content%2$s button and wait for the installation process to finish', 'magazine-news-byte' ), '<strong>', '</strong>' ),
-		'img' => $imagepath . 'import-clickbutton.png',
-		'style' => 'hero-top',
 		);
 
 
@@ -596,45 +559,24 @@ function magnb_upstrings( $string ) {
 		'style' => 'img-bottom',
 		);
 
-	if ( !class_exists( 'HootKit' ) ) {
+	if ( ! class_exists( 'HootKit' ) ) {
 		$quickstart[] = array(
 			/* Translators: 1 is a line break */
-			'name' => sprintf( esc_html__( 'Install%1$sHootKit plugin', 'magazine-news-byte' ), '<br />' ),
-			/* Translators: The %s are placeholders for HTML, so the order can't be changed. */
-			'desc' => sprintf( esc_html__( '%1$s works best with its companion plugin HootKit.%10$s%8$sHootKit is a wpHoot plugin which adds various functionalities to the theme such as widgets and sliders which were developed and styled specifically for the theme. So they fit the theme perfectly keeping your site lightweight and fast without adding any bloated code.%9$s
-				%10$s%2$s
-				%4$sGo to %11$sAppearance > Install Theme Plugins%12$s%5$s
-				%4$sClick the %6$sInstall%7$s link below %6$sHootKit%7$s.%5$s
-				%4$sOnce HootKit is installed, %6$sActivate%7$s it.%5$s
-				%3$s
-				', 'magazine-news-byte' ), $themename, '<ol>', '</ol>', '<li>', '</li>', '<strong>', '</strong>', '<em>', '</em>', '<hr>',
-										'<a href="' . esc_url( admin_url( 'themes.php?page=tgmpa-install-plugins' ) ) . '">', '</a>'
-					),
+			'name' => sprintf( esc_html__( 'Install%1$sHootKit plugin', 'magazine-news-byte' ), '<br />' )
+					. '<small>' . esc_html__( '[ recommended ]', 'magazine-news-byte' ) . '</small>',
+			/* Translators: 1 is the theme name */
+			'desc' => sprintf( esc_html__( '%1$s works best with its companion plugin HootKit.', 'magazine-news-byte' ), $themename ) . '<hr><em>' . esc_html__( 'HootKit is a wpHoot plugin which adds various functionalities to the theme such as widgets and sliders which were developed and styled specifically for the theme.', 'magazine-news-byte' ) . '</em><hr /><a href="' . esc_url( admin_url( "themes.php?page={$slug}-welcome&tab=plugins" ) ) . '">' . esc_html__( 'Go to the Plugins tab to install HootKit', 'magazine-news-byte' ) . '</a>',
 			);
-		/* Translators: The %s are placeholders for HTML, so the order can't be changed. */
-		$idesc = sprintf( esc_html__( '%1$s%2$s%4$sHootKit plugin is currently not active on your site.%5$sWe highly recommend %6$sinstalling and activating the HootKit plugin%7$s before you import demo content. If HootKit plugin is not active, the demo widgets will not get imported and you may not get the desired results.%3$s', 'magazine-news-byte' ), '<hr>', '<span style="border: solid 1px #b6d7e8;color: #5091b2;background: #e9f7fe;display: block;padding: 5px 10px;font-size: 0.8em;line-height: 1.7em;">', '</span>', '<span style="display: block;font-weight: bold;text-transform: uppercase;">', '</span>', '<a href="' . esc_url( admin_url( 'themes.php?page=tgmpa-install-plugins' ) ) . '">', '</a>' );
-	} else {
-		$idesc = '';
 	}
 
+	$hootthemeimplink = ( ! class_exists( 'HootImport' ) ) ? '<a href="' . esc_url( admin_url( "themes.php?page={$slug}-welcome&tab=plugins" ) ) . '">' . esc_html__( 'Go to the Plugins tab to install Hoot Import plugin', 'magazine-news-byte' ) . '</a>' : '<a href="' . esc_url( admin_url( "themes.php?page=hoot-import" ) ) . '">' . esc_html__( 'Go to Hoot Import', 'magazine-news-byte' ) . '</a>';
 	$quickstart[] = array(
 		/* Translators: 1 is a line break */
-		'name' => sprintf( esc_html__( '[Optional]%1$sInstall Demo Content', 'magazine-news-byte' ), '<br />' ),
+		'name' => sprintf( esc_html__( 'Install%1$sDemo Content', 'magazine-news-byte' ), '<br />' )
+				. '<small>' . esc_html__( '[ optional ]', 'magazine-news-byte' ) . '</small>',
 		/* Translators: The %s are placeholders for HTML, so the order can't be changed. */
-		'desc' => sprintf( esc_html__( '%14$sIt is recommended to install demo content only on a fresh new site%15$s
-			Installing demo content is the easiest way to setup your theme and make it look like the %10$sDemo Site%13$s.%9$s
-			%7$sYour existing content (posts, pages, categories, images etc) will NOT be deleted or modified. However new content (posts, images, menus etc.) will be imported and added to your site.%8$s%16$s
-			%1$s
-			%3$sDownload the Demo files from the %11$sSupport Documentation%13$s%4$s
-			%3$sInstall the %11$sOne Click Demo Import%13$s plugin.%4$s
-			%3$sIn your wp-admin, go to %5$sAppearance &gt; Import Demo Data%6$s%4$s
-			%3$sUpload the files from Step 1 and click the %5$sImport%6$s button.%4$s
-			%2$s', 'magazine-news-byte' ), '<ol>', '</ol>', '<li>', '</li>', '<strong>', '</strong>', '<em>', '</em>', '<hr>',
-										'<a href="https://demo.wphoot.com/' . $slug . '/" target="_blank">',
-										'<a href="https://wphoot.com/support/' . $slug . '/#docs-section-demo-content-free" target="_blank">',
-										'<a href="https://wordpress.org/plugins/one-click-demo-import/" target="_blank">',
-										'</a>', '<h4>', '</h4>', $idesc
-				),
+		'desc' => sprintf( esc_html__( 'Importing demo content is the easiest way to setup your theme and make it look like the %1$sDemo Site%2$s', 'magazine-news-byte' ), '<a href="https://demo.wphoot.com/JNES@SLUG/" target="_blank">', '</a>' )
+			. '<hr />' . $hootthemeimplink,
 		);
 
 

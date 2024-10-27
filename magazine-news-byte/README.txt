@@ -2,8 +2,8 @@
 Contributors: wphoot
 Tags: grid-layout, one-column, two-columns, three-columns, left-sidebar, right-sidebar, block-styles, custom-background, custom-colors, custom-header, custom-menu, custom-logo, featured-images, footer-widgets, full-width-template, microformats, sticky-post, theme-options, threaded-comments, translation-ready, wide-blocks, education, news, entertainment
 Requires at least: 5.4
-Tested up to: 6.1
-Requires PHP: 5.6
+Tested up to: 6.6
+Requires PHP: 7.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -26,6 +26,10 @@ Magazine News Byte is a responsive WordPress theme with a clean modern design. F
 You can look at the theme instructions at https://wphoot.com/support/magazine-news-byte/ To get support beyond the scope of documentation provided, please open a support ticket via https://wphoot.com/support/
 
 == Changelog ==
+= 2.11.0 =
+* Compatibility with Hoot Import plugin
+* Option to load Google Fonts locally
+
 = 2.10.0 =
 * Update woocommerce template to 8.6.0
 * Add X (twitter) to Social Profiles
@@ -282,7 +286,6 @@ You can look at the theme instructions at https://wphoot.com/support/magazine-ne
 * Superfish https://github.com/joeldbirch/superfish/ Copyright Joel Birch : MIT License
 * Font Awesome http://fontawesome.io/ Copyright (c) 2015, Dave Gandy : SIL OFL 1.1 (Font) MIT License (Code)
 * TRT Customizer Pro https://github.com/justintadlock/trt-customizer-pro Copyright 2016 Justin Tadlock : GNU GPL Version 2
-* TGM-Plugin-Activation https://github.com/TGMPA/TGM-Plugin-Activation Copyright (c) 2016 TGM : GNU GPL Version 2
 * Parallax http://pixelcog.com/parallax.js/ Copyright 2016 PixelCog Inc. : MIT License
 * Theia Sticky Sidebar https://github.com/WeCodePixels/theia-sticky-sidebar/ Copyright 2013-2016 WeCodePixels : MIT License
 * Resize Sensor from CSS Element Queries https://github.com/marcj/css-element-queries/ Copyright (c) 2013 Marc J. Schmidt : MIT License

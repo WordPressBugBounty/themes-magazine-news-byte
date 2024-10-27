@@ -21,7 +21,7 @@ function magnb_google_fonts_enqueue_url() {
 	$fonts = apply_filters( 'magnb_google_fonts_preparearray', array() );
 	$args = array();
 
-	if ( empty( $fonts ) ) {
+	if ( !is_array( $fonts ) || empty( $fonts ) ) {
 		$modsfont = array( hoot_get_mod( 'logo_fontface' ), hoot_get_mod( 'headings_fontface' ) );
 
 		$fonts ['Roboto'] = array(
@@ -65,8 +65,10 @@ function magnb_google_fonts_enqueue_url() {
 	}
 
 	if ( !empty( $args ) ) {
-		$fonts_url = '//fonts.googleapis.com/css2?' . implode( '&', $args );
-		$fonts_url .= ( apply_filters( 'magnb_google_fonts_displayswap', false ) ) ? '&display=swap' : '';
+		$fonts_url = 'https://fonts.googleapis.com/css2?' . implode( '&', $args ) . '&display=swap';
+		if ( hoot_get_mod( 'load_local_fonts' ) ) {
+			$fonts_url = hoot_wptt_get_webfont_url( esc_url_raw( $fonts_url ) );
+		}
 	}
 
 	return $fonts_url;

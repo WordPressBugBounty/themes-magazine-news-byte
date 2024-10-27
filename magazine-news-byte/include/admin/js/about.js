@@ -21,23 +21,10 @@ jQuery(document).ready(function($) {
 			$navtabs.filter('[data-tabid="'+targetid+'"]').addClass('nav-tab-active');
 			$tabs.removeClass('hoot-tab-active');
 			$target.addClass('hoot-tab-active');
-			var destin = $target.offset().top - 150;
-			$("html:not(:animated),body:not(:animated)").animate({ scrollTop: destin}, 200 );
-		}
-	});
-
-	$('#hoot-welcome-msg .notice-dismiss').on('click',function(e){
-		if( 'undefined' != typeof hoot_dismissible_notice && 'undefined' != typeof hoot_dismissible_notice.nonce && 'undefined' != typeof hoot_dismissible_notice.ajax_action ) {
-			// e.preventDefault();
-			jQuery.ajax({
-				url : ajaxurl, // hoot_dismissible_notice.ajax_url
-				type : 'post',
-				data : {
-					'action': hoot_dismissible_notice.ajax_action,
-					'nonce': hoot_dismissible_notice.nonce
-				},
-				success : function( response ) {}
-			}); //$.post(ajaxurl, data);
+			// Update the URL with the new tab parameter
+			var newUrl = new URL(window.location.href);
+			newUrl.searchParams.set('tab', targetid);
+			history.replaceState(null, null, newUrl.toString());
 		}
 	});
 

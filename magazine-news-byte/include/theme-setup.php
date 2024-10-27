@@ -71,13 +71,32 @@ if ( class_exists( 'WooCommerce' ) ) {
 }
 
 
-/** One click demo import **/
+/** Hoot Import plugin **/
 
-// Disable branding
-add_filter( 'pt-ocdi/disable_pt_branding', 'magnb_disable_pt_branding' );
-function magnb_disable_pt_branding() {
-	return true;
+// theme config
+if ( ! function_exists( 'magnb_hootimport_theme_config' ) ) {
+	function magnb_hootimport_theme_config( $config ) {
+		$child = hoot_data( 'childtheme_name' );
+		$is_official_child = false;
+		if ( $child ) {
+			$checks = apply_filters( 'magnb_hootimport_theme_config_childtheme_array', array() );
+			foreach ( $checks as $check ) {
+				if ( stripos( $child, $check ) !== false ) {
+					$is_official_child = true;
+					break;
+				}
+			}
+		}
+		return ( $is_official_child ) ? $config : array_merge( $config, array(
+			'id' => 'magazine-news-byte', // *required // used for parent and unofficial child themes
+			'menu_title' => __( 'Import Magazine NewsByte Demo', 'magazine-news-byte' ),
+			'theme_name' => hoot_get_data( 'template_name' ),
+			'theme_version' => hoot_get_data( 'template_version' ),
+			'theme_img' => ( function_exists( 'magnb_abouttag' ) ? magnb_abouttag( 'fullshot' ) : '' ),
+		) );
+	}
 }
+add_filter( 'hootimport_theme_config', 'magnb_hootimport_theme_config', 5 );
 
 
 /* === Hootkit Plugin === */
@@ -223,39 +242,3 @@ function magnb_custom_excerpt_length( $length ) {
 	return 50;
 }
 add_filter( 'excerpt_length', 'magnb_custom_excerpt_length', 999 );
-
-/**
- * Register recommended plugins via TGMPA
- *
- * @since 1.0
- * @return void
- */
-function magnb_tgmpa_plugins() {
-	// Array of plugin arrays. Required keys are name and slug.
-	// Since source is from the .org repo, it is not required.
-	$plugins = array(
-		array(
-			'name'     => __( '(HootKit) Magazine NewsByte Sliders, Widgets', 'magazine-news-byte' ),
-			'slug'     => 'hootkit',
-			'required' => false,
-		),
-	);
-
-	// $wpv = get_bloginfo( 'version' );
-	// if ( version_compare( $wpv, '5.8', '>=' ) ) {
-	// 	$plugins[] = array(
-	// 		'name'     => __( 'Classic Widgets', 'magazine-news-byte' ),
-	// 		'slug'     => 'classic-widgets',
-	// 		'required' => false,
-	// 	);
-	// }
-	$plugins = apply_filters( 'magnb_tgmpa_plugins', $plugins );
-
-	// Array of configuration settings.
-	$config = array(
-		'is_automatic' => true,
-	);
-	// Register plugins with TGM_Plugin_Activation class
-	tgmpa( $plugins, $config );
-}
-add_filter( 'tgmpa_register', 'magnb_tgmpa_plugins' );

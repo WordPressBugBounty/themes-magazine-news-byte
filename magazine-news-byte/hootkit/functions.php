@@ -2,7 +2,6 @@
 /**
  * This file contains functions and hooks for styling Hootkit plugin
  *   Hootkit is a free plugin released under GPL license and hosted on wordpress.org.
- *   It is recommended to the user via wp-admin using TGMPA class
  *
  * This file is loaded at 'after_setup_theme' action @priority 10 ONLY IF hootkit plugin is active
  *

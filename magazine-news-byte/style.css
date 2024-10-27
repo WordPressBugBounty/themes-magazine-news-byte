@@ -1,13 +1,13 @@
 /*
 Theme Name: Magazine News Byte
-Version: 2.10.0
+Version: 2.11.0
 Text Domain: magazine-news-byte
 Author: wpHoot
 Author URI: https://wphoot.com/
 Theme URI: https://wphoot.com/themes/magazine-news-byte/
 Requires at least: 5.4
-Tested up to: 6.1
-Requires PHP: 5.6
+Tested up to: 6.6
+Requires PHP: 7.4
 Description: Magazine News Byte comes with numerous options and widgets to help you create a unique content driven website. SEO optimized and works with Yoast SEO plugin, Contect Form 7, Jetpack, Google Maps mappress, Page Builder, Elementor and various other plugins. Translation and multi-lingual ready! Theme support is available at https://wphoot.com/support/ You can also check out the theme instructions at https://wphoot.com/support/magazine-news-byte/ and demo at https://demo.wphoot.com/magazine-news-byte/ for a closer look.
 Tags: grid-layout, one-column, two-columns, three-columns, left-sidebar, right-sidebar, block-styles, custom-background, custom-colors, custom-header, custom-menu, custom-logo, featured-images, footer-widgets, full-width-template, microformats, sticky-post, theme-options, threaded-comments, translation-ready, wide-blocks, education, news, entertainment
 License: GNU General Public License 3.0
@@ -3662,6 +3662,9 @@ a.more-link {
 .hoot-cf7-style .wpcf7-form {
   text-transform: uppercase;
   margin: 0.66666667em 0;
+}
+.hoot-cf7-style .wpcf7-form label + span {
+  display: block;
 }
 .hoot-cf7-style .wpcf7-form .wpcf7-list-item-label,
 .hoot-cf7-style .wpcf7-form .wpcf7-quiz-label {

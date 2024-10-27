@@ -52,7 +52,7 @@ add_filter( 'hoot_attr_comment-content',   'hoot_attr_comment_content',   5 );
  */
 function hoot_attr_body( $attr ) {
 
-	$class = apply_filters( 'magnb_default_body_class', 'newsbyte' );
+	$class = apply_filters( 'magnb_default_body_class', 'magazine-news-byte' );
 	$class = is_string( $class ) ? esc_attr( $class ) : '';
 	$attr['class']     = join( ' ', get_body_class( $class ) );
 	$attr['dir']       = is_rtl() ? 'rtl' : 'ltr';
