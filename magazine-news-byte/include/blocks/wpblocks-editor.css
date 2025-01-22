@@ -127,3 +127,13 @@ figure.wp-block-image:not(.alignleft):not(.alignright):not(.aligncenter):not(.al
     padding-bottom: 1.5em;
   }
 }
+/************* WC Blocks *************/
+[class*=wp-block-woocommerce],
+[class*=wc-block] {
+  text-align: inherit;
+}
+[class*=wp-block-woocommerce].alignwide,
+[class*=wc-block].alignwide {
+  margin-left: auto;
+  margin-right: auto;
+}

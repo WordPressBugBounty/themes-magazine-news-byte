@@ -397,6 +397,7 @@ function hoot_sanitize_customize_sortlist( $value, $setting ) {
  * @return array|false
  */
 function hoot_sortlist( $rawvalue, $returnid = false ) {
+	if ( ! is_string( $rawvalue ) ) return false;
 
 	$valuearray = array();
 	if ( !empty( $rawvalue ) ) { // We either have a default, or value stored

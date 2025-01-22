@@ -1,6 +1,6 @@
 /*
 Theme Name: Magazine News Byte
-Version: 2.11.0
+Version: 2.11.1
 Text Domain: magazine-news-byte
 Author: wpHoot
 Author URI: https://wphoot.com/
@@ -3954,6 +3954,16 @@ a.more-link {
   border-bottom: none;
   padding-bottom: 0;
 }
+.wc-block-components-button[disabled] {
+  opacity: 0.5;
+}
+body.wordpress .wc-block-components-button {
+  -webkit-transition: color 0.2s ease-in, background-color 0.2s linear, box-shadow linear 0.2s;
+  -moz-transition: color 0.2s ease-in, background-color 0.2s linear, box-shadow linear 0.2s;
+  -o-transition: color 0.2s ease-in, background-color 0.2s linear, box-shadow linear 0.2s;
+  transition: color 0.2s ease-in, background-color 0.2s linear, box-shadow linear 0.2s;
+}
+.wc-block-components-button,
 .woocommerce #respond input#submit.alt,
 .woocommerce a.button.alt,
 .woocommerce button.button.alt,
@@ -3961,7 +3971,9 @@ a.more-link {
   background: #bd2e2e;
   color: #ffffff;
   border: solid 1px #bd2e2e;
+  text-decoration: none;
 }
+.wc-block-components-button:hover,
 .woocommerce #respond input#submit.alt:hover,
 .woocommerce a.button.alt:hover,
 .woocommerce button.button.alt:hover,

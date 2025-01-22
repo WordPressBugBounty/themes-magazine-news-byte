@@ -65,8 +65,8 @@ function hoot_get_attr( $slug, $context = '', $attr = '' ) {
 	foreach ( array( 'id', 'class' ) as $key ) {
 		if ( !empty( $attr[ $key ] ) ) {
 			$out .= ' ' . esc_attr( $key ) . '="' . hoot_sanitize_html_classes( $attr[ $key ] ) . '"';
-			unset( $attr[ $key ] );
 		}
+		unset( $attr[ $key ] );
 	}
 
 	// 2. Remaining attributes
@@ -74,7 +74,7 @@ function hoot_get_attr( $slug, $context = '', $attr = '' ) {
 		if ( $value !== false ) {
 			$out .= ( !empty( $value ) ) ?
 					' ' . esc_attr( $name ) . '="' . esc_attr( $value ) . '"' :
-					' ' . esc_attr( $name );
+					( $name !== 'style' ? ' ' . esc_attr( $name ) : '' );
 		}
 	}
 

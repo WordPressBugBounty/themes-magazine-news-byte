@@ -479,9 +479,8 @@
 		wp.customize( 'frontpage_sectionbg_'+areaid+'-image', function( value ) {
 			value.bind( function( newval ) {
 				areapageid = ( areaid == 'content' ) ? 'page-content' : areaid;
-				var type = '', parallax = 0;
-				wp.customize( 'frontpage_sectionbg_'+areaid+'-parallax', function( setting ) { parallax = setting.get(); });
-				if ( parallax ) wp.customize.selectiveRefresh.requestFullRefresh();
+				var type = '';
+				// Do nothing in customizer - preview not available for parallax!
 				wp.customize( 'frontpage_sectionbg_'+areaid+'-type', function( setting ) { type = setting.get(); });
 				if ( type=='image' ) {
 					if (newval) $('#frontpage-'+areapageid).css('background-image','url('+newval+')');
@@ -490,14 +489,7 @@
 			} );
 		} );
 		wp.customize( 'frontpage_sectionbg_'+areaid+'-parallax', function( value ) {
-			value.bind( function( newval ) {
-				areapageid = ( areaid == 'content' ) ? 'page-content' : areaid;
-				var type = 0;
-				wp.customize( 'frontpage_sectionbg_'+areaid+'-type', function( setting ) { type = setting.get(); });
-				if ( type == 'image' ) { // refresh only if bg set to image type
-					wp.customize.selectiveRefresh.requestFullRefresh();
-				}
-			} );
+			// Do nothing in customizer - preview not available for parallax!
 		} );
 		wp.customize( 'frontpage_sectionbg_'+areaid+'-font', function( value ) {
 			value.bind( function( newval ) {

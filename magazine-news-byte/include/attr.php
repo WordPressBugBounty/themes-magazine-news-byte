@@ -324,7 +324,7 @@ function magnb_attr_frontpage_area( $attr, $context ) {
 	if ( $module_bg == 'image' ) {
 		$module_bg_img = hoot_get_mod( "frontpage_sectionbg_{$key}-image" );
 		if ( !empty( $module_bg_img ) ) {
-			$module_bg_parallax = hoot_get_mod( "frontpage_sectionbg_{$key}-parallax" );
+			$module_bg_parallax = is_customize_preview() ? false : hoot_get_mod( "frontpage_sectionbg_{$key}-parallax" );// JNES@SR
 			$attr['class'] .= ( $module_bg_parallax ) ? ' bg-fixed' : ' bg-scroll';
 			if ( $module_bg_parallax ) {
 				$attr['data-parallax'] = 'scroll';

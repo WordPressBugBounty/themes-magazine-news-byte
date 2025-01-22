@@ -161,7 +161,7 @@ jQuery(document).ready(function($) {
 			var $groupstart = $flypanelbutton.parent('.hoot-customize-control-groupstart');
 			$groupstart.addClass('flygroup-open');
 			var moveBlocks = $groupstart.nextUntil( '.hoot-customize-control-groupend', "li" );
-			$('#hoot-flygroup-content').html('').append(moveBlocks).wrapInner('<ul></ul>');
+			$('#hoot-flygroup-content ul').css('display','none').html('').append(moveBlocks).fadeIn();
 			$body.addClass('hoot-displaying-flygroup');
 			$body.data('flypaneltype','group');
 		}
@@ -170,11 +170,12 @@ jQuery(document).ready(function($) {
 	$body.on( "closeflypanel", function() {
 		$body.removeClass('hoot-displaying-flygroup');
 		if($body.data('flypaneltype')=='group') {
-			$('#hoot-flygroup-content > ul > li').each( function() {
-				var controlGroup = $(this).data('controlgroup');
-				$(this).insertBefore('#'+controlGroup+'-end');
-				$('#'+controlGroup).removeClass('flygroup-open');
-			});
+			var itemsToMove = $('#hoot-flygroup-content > ul > li');
+			if ( itemsToMove.length ) {
+				var controlgroup = $(itemsToMove[0]).data('controlgroup'); // all li's in flygroup have same controlgroup
+				itemsToMove.insertBefore('#' + controlgroup + '-end');
+				$('#' + controlgroup).removeClass('flygroup-open');
+			}
 			$body.data('flypaneltype','');
 		}
 	});
@@ -224,12 +225,30 @@ jQuery(document).ready(function($) {
 				if ( ! $(event.target).closest('.media-modal').length )
 					closeFly();
 			});
+			var $obstarget = $('#hoot-flygroup-content ul');
+			if ($obstarget.length) {
+				var obstarget = $obstarget[0];
+				var grpobserver = new MutationObserver(function(mutations) {
+					mutations.forEach(function(mutation) {
+						if ($(obstarget).children().length === 0) {
+							closeFly(true);
+						}
+					});
+				});
+				var config = {
+					childList: true, // Observe direct child additions/removals
+					subtree: false   // Do not observe deeper descendants
+				};
+				grpobserver.observe(obstarget, config);
+			}
 		},
-		closeFly = function(){
-			$body.data('flypanel','close');
-			$body.data('flypanelbutton','');
-			$flypanelButtons.data('flypanel','close');
-			$body.trigger('closeflypanel');
+		closeFly = function(force=false){
+			if( $body.data('flypanel')=='open' ) {
+				$body.data('flypanel','close');
+				$body.data('flypanelbutton','');
+				$flypanelButtons.data('flypanel','close');
+				$body.trigger('closeflypanel');
+			}
 		},
 		openFly = function($flypanelButton){
 			$body.data('flypanel','open');

@@ -91,7 +91,9 @@ li.deactivated .hoot-sortlistitem-head .sortlistitem-display { background: #f1f1
 /* @includes Customizer Layout Mods */
 
 body.hoot-displaying-flyicon #hoot-flyicon { left: 0; width: 300px; z-index: 9; }
-body.hoot-displaying-flyicon #customize-preview { opacity: .4; left: 300px; }
+body.hoot-displaying-flyicon #customize-preview { left: 300px; } /* opacity: .4; */
+body.hoot-displaying-flyicon .preview-tablet #customize-preview,
+body.hoot-displaying-flyicon .preview-mobile #customize-preview { left: calc(50% + 150px); }
 body.hoot-displaying-flyicon #customize-controls {}
 @media screen and (max-width: 640px) {
 	body.hoot-displaying-flyicon #hoot-flyicon { left: 0; width: 100%; position: fixed; z-index: 11; }
@@ -122,13 +124,14 @@ body.hoot-displaying-flyicon #customize-controls {}
 #customize-controls .hoot-customize-control-group-blocks { display: none !important; }
 /* Group Fly */
 #hoot-flygroup-content > ul { margin: 0; }
-#hoot-flygroup-content .hoot-customize-control-group-blocks { display: list-item !important; }
 
 /** Displaying Group Fly **/
 /* @includes Customizer Layout Mods */
 
 body.hoot-displaying-flygroup #hoot-flygroup { left: 0; width: 300px; z-index: 9; }
-body.hoot-displaying-flygroup #customize-preview { opacity: .4; left: 300px; }
+body.hoot-displaying-flygroup #customize-preview { left: 300px; } /* opacity: .4; */
+body.hoot-displaying-flygroup .preview-tablet #customize-preview,
+body.hoot-displaying-flygroup .preview-mobile #customize-preview { left: calc(50% + 150px); }
 body.hoot-displaying-flygroup #customize-controls {}
 @media screen and (max-width: 640px) {
 	body.hoot-displaying-flygroup #hoot-flygroup { left: 0; width: 100%; position: fixed; z-index: 11; }
@@ -179,6 +182,8 @@ label { cursor: inherit; }
 	   -moz-transition: all .2s;
 	        transition: all .2s; 
 }
+.hoot-displaying-flygroup #hoot-flygroup,
+.hoot-displaying-flyicon #hoot-flyicon { box-shadow: 2px 2px 12px 0px rgba(100, 100, 100, 0.5); }
 .hoot-flypanel-nav { position: absolute; left: 0; right: 0; height: 45px; padding: 0 15px; line-height: 45px; z-index: 10; background: #eee; }
 .hoot-flypanel-header { border-bottom: 1px solid #ddd; top: 0; }
 .hoot-flypanel-footer { border-top: 1px solid #ddd; bottom: 0; }

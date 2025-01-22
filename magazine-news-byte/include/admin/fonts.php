@@ -66,8 +66,12 @@ function magnb_google_fonts_enqueue_url() {
 
 	if ( !empty( $args ) ) {
 		$fonts_url = 'https://fonts.googleapis.com/css2?' . implode( '&', $args ) . '&display=swap';
-		if ( hoot_get_mod( 'load_local_fonts' ) ) {
-			$fonts_url = hoot_wptt_get_webfont_url( esc_url_raw( $fonts_url ) );
+		if ( function_exists( 'hoot_wptt_get_webfont_url' ) ) {
+			if ( hoot_get_mod( 'load_local_fonts' ) ) {
+				$fonts_url = hoot_wptt_get_webfont_url( esc_url_raw( $fonts_url ) );
+			} elseif( class_exists( 'Hoot_WPTT_WebFont_Loader' ) ) {
+				$font_possible_cleanup = new Hoot_WPTT_WebFont_Loader( $fonts_url );
+			}
 		}
 	}
 

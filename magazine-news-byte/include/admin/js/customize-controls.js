@@ -5,7 +5,7 @@
 
 ( function( api ) {
 
-	// Extends our custom "hoot-theme" section. ( trt-customizer-pro - custom section )
+	// Extends our custom "hoot-theme" section.
 	api.sectionConstructor['hoot-theme'] = api.Section.extend( {
 		// No events for this type of section.
 		attachEvents: function () {},
@@ -15,62 +15,51 @@
 		}
 	} );
 
-	/*** JS equivalent for active_callback of controls based on controls with selective_refresh ***/
-	// @credit:
-	//    https://florianbrinkmann.com/en/3783/conditional-displaying-and-hiding-of-customizer-controls-via-javascript/
-	// wp.customize.control is available in customize.js and not in customize-preview.js :
-	//    https://wordpress.stackexchange.com/questions/249706/customizer-active-callback-live-toggle-controls
+	/*** JS equivalent for active_callback ***/
 
 	api.bind('ready', function () {
 		api.control('logo', function (control) {
 			control.setting.bind(function (value) {
 				switch (value) {
 					case 'text':
-						// Use instead of api.control('logo_size').activate() to first ensure that the control is registered
-						//    https://wordpress.stackexchange.com/questions/270554/accessing-customizer-values-in-javascript
-						api.control( 'logo_size', function( control ) {            control.activate(); });
-						api.control( 'site_title_icon', function( control ) {      control.activate(); });
-						api.control( 'site_title_icon_size', function( control ) { control.activate(); });
-						api.control( 'custom_logo', function( control ) {          control.deactivate(); });
-						api.control( 'logo_image_width', function( control ) {     control.deactivate(); });
-						api.control( 'logo_custom', function( control ) {          control.deactivate(); });
-						// api.control( 'show_tagline', function( control ) {         control.activate(); });
+						api.control( 'logo_size', function( control ) {            control.activate(); } );
+						api.control( 'site_title_icon', function( control ) {      control.activate(); } );
+						api.control( 'site_title_icon_size', function( control ) { control.activate(); } );
+						api.control( 'custom_logo', function( control ) {          control.deactivate(); } );
+						api.control( 'logo_image_width', function( control ) {     control.deactivate(); } );
+						api.control( 'logo_custom', function( control ) {          control.deactivate(); } );
 						break;
 					case 'custom':
-						api.control( 'logo_size', function( control ) {            control.deactivate(); });
-						api.control( 'site_title_icon', function( control ) {      control.activate(); });
-						api.control( 'site_title_icon_size', function( control ) { control.activate(); });
-						api.control( 'custom_logo', function( control ) {          control.deactivate(); });
-						api.control( 'logo_image_width', function( control ) {     control.deactivate(); });
-						api.control( 'logo_custom', function( control ) {          control.activate(); });
-						// api.control( 'show_tagline', function( control ) {         control.activate(); });
+						api.control( 'logo_size', function( control ) {            control.deactivate(); } );
+						api.control( 'site_title_icon', function( control ) {      control.activate(); } );
+						api.control( 'site_title_icon_size', function( control ) { control.activate(); } );
+						api.control( 'custom_logo', function( control ) {          control.deactivate(); } );
+						api.control( 'logo_image_width', function( control ) {     control.deactivate(); } );
+						api.control( 'logo_custom', function( control ) {          control.activate(); } );
 						break;
 					case 'image':
-						api.control( 'logo_size', function( control ) {            control.deactivate(); });
-						api.control( 'site_title_icon', function( control ) {      control.deactivate(); });
-						api.control( 'site_title_icon_size', function( control ) { control.deactivate(); });
-						api.control( 'custom_logo', function( control ) {          control.activate(); });
-						api.control( 'logo_image_width', function( control ) {     control.deactivate(); });
-						api.control( 'logo_custom', function( control ) {          control.deactivate(); });
-						// api.control( 'show_tagline', function( control ) {         control.deactivate(); });
+						api.control( 'logo_size', function( control ) {            control.deactivate(); } );
+						api.control( 'site_title_icon', function( control ) {      control.deactivate(); } );
+						api.control( 'site_title_icon_size', function( control ) { control.deactivate(); } );
+						api.control( 'custom_logo', function( control ) {          control.activate(); } );
+						api.control( 'logo_image_width', function( control ) {     control.deactivate(); } );
+						api.control( 'logo_custom', function( control ) {          control.deactivate(); } );
 						break;
 					case 'mixed':
-						api.control( 'logo_size', function( control ) {            control.activate(); });
-						api.control( 'site_title_icon', function( control ) {      control.deactivate(); });
-						api.control( 'site_title_icon_size', function( control ) { control.deactivate(); });
-						api.control( 'custom_logo', function( control ) {          control.activate(); });
-						api.control( 'logo_image_width', function( control ) {     control.activate(); });
-						api.control( 'logo_custom', function( control ) {          control.deactivate(); });
-						// api.control( 'show_tagline', function( control ) {         control.activate(); });
+						api.control( 'logo_size', function( control ) {            control.activate(); } );
+						api.control( 'site_title_icon', function( control ) {      control.deactivate(); } );
+						api.control( 'site_title_icon_size', function( control ) { control.deactivate(); } );
+						api.control( 'custom_logo', function( control ) {          control.activate(); } );
+						api.control( 'logo_image_width', function( control ) {     control.activate(); } );
+						api.control( 'logo_custom', function( control ) {          control.deactivate(); } );
 						break;
 					case 'mixedcustom':
-						api.control( 'logo_size', function( control ) {            control.deactivate(); });
-						api.control( 'site_title_icon', function( control ) {      control.deactivate(); });
-						api.control( 'site_title_icon_size', function( control ) { control.deactivate(); });
-						api.control( 'custom_logo', function( control ) {          control.activate(); });
-						api.control( 'logo_image_width', function( control ) {     control.activate(); });
-						api.control( 'logo_custom', function( control ) {          control.activate(); });
-						// api.control( 'show_tagline', function( control ) {         control.activate(); });
+						api.control( 'logo_size', function( control ) {            control.deactivate(); } );
+						api.control( 'site_title_icon', function( control ) {      control.deactivate(); } );
+						api.control( 'site_title_icon_size', function( control ) { control.deactivate(); } );
+						api.control( 'custom_logo', function( control ) {          control.activate(); } );
+						api.control( 'logo_image_width', function( control ) {     control.activate(); } );
+						api.control( 'logo_custom', function( control ) {          control.activate(); } );
 						break;
 				}
 			});
@@ -79,18 +68,16 @@
 			control.setting.bind(function (value) {
 				switch (value) {
 					case 'top': case 'bottom':
-						// Use instead of api.control('logo_size').activate() to first ensure that the control is registered
-						//    https://wordpress.stackexchange.com/questions/270554/accessing-customizer-values-in-javascript
-						api.control( 'logo_side', function( control ) {            control.activate(); });
-						api.control( 'fullwidth_menu_align', function( control ) { control.activate(); });
+						api.control( 'logo_side', function( control ) {            control.activate(); } );
+						api.control( 'fullwidth_menu_align', function( control ) { control.activate(); } );
 						break;
 					case 'none':
-						api.control( 'logo_side', function( control ) {            control.activate(); });
-						api.control( 'fullwidth_menu_align', function( control ) { control.deactivate(); });
+						api.control( 'logo_side', function( control ) {            control.activate(); } );
+						api.control( 'fullwidth_menu_align', function( control ) { control.deactivate(); } );
 						break;
 					case 'side':
-						api.control( 'logo_side', function( control ) {            control.deactivate(); });
-						api.control( 'fullwidth_menu_align', function( control ) { control.deactivate(); });
+						api.control( 'logo_side', function( control ) {            control.deactivate(); } );
+						api.control( 'fullwidth_menu_align', function( control ) { control.deactivate(); } );
 						break;
 				}
 			});
@@ -105,6 +92,73 @@
 					api[type].instance(id).focus();
 				}
 			});
+
+			var areaIds = ['area_a', 'area_b', 'area_c', 'area_d', 'area_e', 'area_f', 'area_g', 'area_h', 'area_i', 'area_j', 'area_k', 'area_l', 'content'];
+			function updateBgVisibility($input,areaId,initial=false) {
+				var selectedValue = $input.val();
+				var $parentli = $input.closest('li');
+				var $colorli = $parentli.siblings("#customize-control-frontpage_sectionbg_" + areaId + "-color");
+				var $imageli = $parentli.siblings("#customize-control-frontpage_sectionbg_" + areaId + "-image");
+				var $parallaxli = $parentli.siblings("#customize-control-frontpage_sectionbg_" + areaId + "-parallax");
+				if (selectedValue === "none") {
+					if ( initial ) {
+						$colorli.hide(); $imageli.hide(); $parallaxli.hide();
+					} else {
+						$colorli.slideUp('fast'); $imageli.slideUp('fast'); $parallaxli.slideUp('fast');
+					}
+				} else if (selectedValue === "color" || selectedValue === "highlight") {
+					if ( initial ) {
+						$colorli.show(); $imageli.hide(); $parallaxli.hide();
+					} else {
+						$colorli.slideDown('fast'); $imageli.slideUp('fast'); $parallaxli.slideUp('fast');
+					}
+				} else if (selectedValue === "image") {
+					if ( initial ) {
+						$colorli.hide(); $imageli.show(); $parallaxli.show();
+					} else {
+						$colorli.slideUp('fast'); $imageli.slideDown('fast'); $parallaxli.slideDown('fast');
+					}
+				}
+			}
+			function updateFontVisibility($input,areaId,initial=false) {
+				var selectedValue = $input.val();
+				var $parentli = $input.closest('li');
+				var $colorli = $parentli.siblings("#customize-control-frontpage_sectionbg_" + areaId + "-fontcolor");
+				if (selectedValue === "theme") {
+					if ( initial ) {
+						$colorli.hide();
+					} else {
+						$colorli.slideUp('fast');
+					}
+				} else {
+					if ( initial ) {
+						$colorli.show();
+					} else {
+						$colorli.slideDown('fast');
+					}
+				}
+			}
+			areaIds.forEach(function(areaId) {
+				var $typeinput = $("#customize-control-frontpage_sectionbg_"+areaId+"-type input[type='radio']");
+				if( $typeinput.length ) {
+					$typeinput.filter(':checked').each(function() {
+						updateBgVisibility($(this), areaId, true);
+					});
+					$typeinput.on('change', function() {
+						updateBgVisibility($(this), areaId);
+					});
+				}
+				var $typeinput = $("#customize-control-frontpage_sectionbg_"+areaId+"-font input[type='radio']");
+				if( $typeinput.length ) {
+					$typeinput.filter(':checked').each(function() {
+						updateFontVisibility($(this), areaId, true);
+					});
+					$typeinput.on('change', function() {
+						updateFontVisibility($(this), areaId);
+					});
+				}
+			});
+
 		});
 
 	});

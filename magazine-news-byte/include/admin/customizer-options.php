@@ -676,7 +676,7 @@ function magnb_customizer_options() {
 		'section'     => $section,
 		'type'        => 'checkbox',
 		'default'     => 0,
-		'description' => esc_html__( 'Enable this to load Google Fonts (if used) from your own site instead of Google servers.', 'magazine-news-byte' ),
+		'description' => esc_html__( 'Enable this to load Google Fonts (if used) from your own site instead of Google servers. This is required for GDPR compliance for EU visitors.', 'magazine-news-byte' ),
 		'priority'    => 235,
 	);
 
@@ -914,10 +914,11 @@ function magnb_customizer_options() {
 					'transport' => 'postMessage',
 				),
 				'parallax' => array(
-					'label'   => esc_html__( 'Apply Parallax Effect to Background Image', 'magazine-news-byte' ),
+					'label'   => esc_html__( 'Apply Parallax Effect to Background Image (preview not available in Customizer)', 'magazine-news-byte' ),
 					'type'    => 'checkbox',
 					// 'default' => 1,
 					// 'default' => ( ( $fpgmodid == 'area_b' ) ? 1 : 0 ),
+					'transport' => 'postMessage', // Do nothing in customizer - preview not available for parallax!
 				),
 				'font' => array(
 					'label'   => esc_html__( 'Font Color', 'magazine-news-byte' ),
