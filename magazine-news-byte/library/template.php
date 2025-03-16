@@ -385,12 +385,15 @@ function hoot_display_meta_info( $args = '', $context = '', $editlink = true ) {
 	endif;
 
 	if ( !empty( $display['comments'] ) && comments_open() ) :
-		$blocks['comments']['label'] = __( 'With:', 'magazine-news-byte' );
 		ob_start();
 		comments_popup_link(__( '0 Comments', 'magazine-news-byte' ),
 							__( '1 Comment', 'magazine-news-byte' ),
 							__( '% Comments', 'magazine-news-byte' ), 'comments-link', '' );
-		$blocks['comments']['content'] = ob_get_clean();
+		$comments = ob_get_clean();
+		if ( !empty( $comments ) ) {
+			$blocks['comments']['label'] = __( 'With:', 'magazine-news-byte' );
+			$blocks['comments']['content'] = $comments;
+		}
 	endif;
 
 	if ( $editlink && $edit_link = get_edit_post_link() ) :

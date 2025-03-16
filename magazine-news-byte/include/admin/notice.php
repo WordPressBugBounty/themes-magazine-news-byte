@@ -83,11 +83,12 @@ function magnb_add_welcome_notice() {
 	$fullshot = magnb_abouttag( 'fullshot' );
 	$import_config = apply_filters( 'hootimport_theme_config', array() ); // Hoot Import has been configured for active theme
 	$display_import = ! empty( $import_config ) && ! get_option( "{$slug}-dismiss-import" );
+	$display_hootkit = ! class_exists( 'HootKit' );
 	?>
 	<div id="hoot-welcome-msg" class="hoot-welcome-msg notice notice-success is-dismissible">
 		<div class="hoot-welcome-content">
 			<?php if ( $fullshot ) : ?>
-				<a class="hoot-welcome-img <?php if ( $display_import ) { echo 'hoot-welcome-img--large'; } ?>" href="<?php echo esc_url( "https://demo.wphoot.com/magazine-news-byte" ); ?>" target="_blank">
+				<a class="hoot-welcome-img <?php if ( $display_import || $display_hootkit ) { echo 'hoot-welcome-img--large'; } ?>" href="<?php echo esc_url( "https://demo.wphoot.com/magazine-news-byte" ); ?>" target="_blank">
 					<img class="hoot-welcome-screenshot" src="<?php echo esc_url( $fullshot ); ?>" alt="<?php echo esc_attr( $themename ); ?>" />
 				</a>
 			<?php endif; ?>
@@ -98,13 +99,36 @@ function magnb_add_welcome_notice() {
 				?></h1>
 				<p><?php
 					/* Translators: 1 is the link start markup, 2 is link markup end */
-					printf( esc_html__( 'To get started and fully take advantage of our theme, please make sure you visit the welcome page for the %1$sQuick Start Guide%2$s.', 'magazine-news-byte' ), '<a href="' . esc_url( admin_url( "themes.php?page={$slug}-welcome&tab=qstart" ) ) . '">', '</a>' );
+					printf( esc_html__( 'To get started and fully take advantage of our theme, please make sure you visit the welcome page for the %1$sQuick Start Guide%2$s.', 'magazine-news-byte' ), '<a href="' . esc_url( admin_url( "themes.php?page={$slug}-welcome&tab=qstart" ) ) . '" style="display: inline-block;">', '</a>' );
 				?></p>
-				<?php if ( $display_import ) : ?>
-					<p><?php _e( 'Or you can import the demo data by clicking the button below to help you get familiar with the theme.', 'magazine-news-byte' ); ?></p>
-					<p><a class="button button-primary hoot-welcome-btn hoot-btn-processplugin" href="#"><?php esc_html_e( 'Import Demo Content', 'magazine-news-byte' ); ?></a></p>
-					<?php if ( ! class_exists( 'HootImport' ) ) : ?><p class="hoot-welcome-note"><?php _e( 'Clicking the button will install and activate the "Hoot Import" plugin.', 'magazine-news-byte' ); ?></p><?php endif; ?>
+
+				<?php if ( $display_import || $display_hootkit ) : $class = $display_import && $display_hootkit ? 'hoot-welcome-multiactions' : ''; ?>
+					<div class="hoot-welcome-actions <?php echo sanitize_html_class( $class ); ?>">
+						<?php if ( $display_hootkit ) : ?>
+							<div>
+								<div>
+									<div><a class="button button-primary hoot-welcome-btn hoot-btn-processplugin" href="#" data-plugin="hootkit"><?php esc_html_e( 'Install Hoot Kit', 'magazine-news-byte' ); ?></a></div>
+									<p><?php _e( 'Add Sliders and Widgets developed and designed specifically for the theme.', 'magazine-news-byte' ); ?></p>
+								</div>
+								<div class="hoot-welcome-note"><?php _e( 'Above button installs the "HootKit" plugin.', 'magazine-news-byte' ); ?></div>
+							</div>
+						<?php endif; ?>
+						<?php if ( $display_import ) : ?>
+							<div>
+								<div>
+									<div><a class="button button-secondary hoot-welcome-btn hoot-btn-processplugin" href="#"><?php esc_html_e( 'Import Demo Content', 'magazine-news-byte' ); ?></a></div>
+									<p><?php _e( 'Import demo data to get familiar with the theme.', 'magazine-news-byte' ); ?></p>
+									<p><em><?php
+									/* Translators: 1 is the link start markup, 2 is link markup end */
+									printf( esc_html__( '%1$sPro Tip:%2$s If you have existing content on your site, Import only the widgets and customizer settings.', 'magazine-news-byte' ), '<strong>', '</strong>' );
+									?></em></p>
+								</div>
+								<?php if ( ! class_exists( 'HootImport' ) ) : ?><div class="hoot-welcome-note"><?php _e( 'Above button installs the "Hoot Import" plugin.', 'magazine-news-byte' ); ?></div><?php endif; ?>
+							</div>
+						<?php endif; ?>
+					</div>
 				<?php endif; ?>
+
 			</div>
 		</div>
 	</div>

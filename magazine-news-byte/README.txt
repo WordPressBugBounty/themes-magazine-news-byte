@@ -26,6 +26,11 @@ Magazine News Byte is a responsive WordPress theme with a clean modern design. F
 You can look at the theme instructions at https://wphoot.com/support/magazine-news-byte/ To get support beyond the scope of documentation provided, please open a support ticket via https://wphoot.com/support/
 
 == Changelog ==
+= 2.11.2 =
+* bugfix: Remove label 'With' when no comments and comments are closed
+* Fix image link for hoot import
+* Fix links typo
+
 = 2.11.1 =
 * Fix customizer flypanel display minor bug
 * WooCommerce Cart and Checkout Block Styling

@@ -92,7 +92,7 @@ if ( ! function_exists( 'magnb_hootimport_theme_config' ) ) {
 			'menu_title' => __( 'Import Magazine NewsByte Demo', 'magazine-news-byte' ),
 			'theme_name' => hoot_get_data( 'template_name' ),
 			'theme_version' => hoot_get_data( 'template_version' ),
-			'theme_img' => ( function_exists( 'magnb_abouttag' ) ? magnb_abouttag( 'fullshot' ) : '' ),
+			'theme_img' => function_exists( 'magnb_abouttag' ) ? (  magnb_abouttag( 'fullshot' ) !==  magnb_abouttag( 'shot' ) ?  magnb_abouttag( 'fullshot' ) : '' ) : '',
 		) );
 	}
 }

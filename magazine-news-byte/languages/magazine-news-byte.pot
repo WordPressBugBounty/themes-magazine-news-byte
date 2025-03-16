@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Magazine News Byte\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-22 13:23+0530\n"
+"POT-Creation-Date: 2025-03-17 00:45+0530\n"
 "PO-Revision-Date: 2021-07-08 00:30+0530\n"
 "Last-Translator: wpHoot <admin@wphoot.com>\n"
 "Language-Team: wpHoot <admin@wphoot.com>\n"
@@ -173,7 +173,7 @@ msgstr ""
 
 #: ../include/admin/about.php:389
 #, php-format
-msgid "%1$s Premium allows you to create unlimited sliders with as many slides as you need using the awesome HootKit plugin.%2$s%3$sAdd as Shortcodes%4$sYou can use these sliders on your Frontpage, or add them anywhere using shortcodes - like in your Posts, Sidebars or Footer."
+msgid "%1$s Premium allows you to create unlimited sliders with as many slides as you need using the awesome HootKit plugin.%2$sSelect from displaying your own images with text to carousels and vertical sliding lists for posts and WooCommerce products."
 msgstr ""
 
 #: ../include/admin/about.php:394
@@ -1379,29 +1379,46 @@ msgstr ""
 msgid "Please Wait. This may take a while..."
 msgstr ""
 
-#: ../include/admin/notice.php:97
+#: ../include/admin/notice.php:98
 #, php-format
 msgid "Thank you for choosing %1$s!"
 msgstr ""
 
-#: ../include/admin/notice.php:101
+#: ../include/admin/notice.php:102
 #, php-format
 msgid "To get started and fully take advantage of our theme, please make sure you visit the welcome page for the %1$sQuick Start Guide%2$s."
 msgstr ""
 
-#: ../include/admin/notice.php:104
-msgid "Or you can import the demo data by clicking the button below to help you get familiar with the theme."
+#: ../include/admin/notice.php:110
+msgid "Install Hoot Kit"
 msgstr ""
 
-#: ../include/admin/notice.php:105
+#: ../include/admin/notice.php:111
+msgid "Add Sliders and Widgets developed and designed specifically for the theme."
+msgstr ""
+
+#: ../include/admin/notice.php:113
+msgid "Above button installs the \"HootKit\" plugin."
+msgstr ""
+
+#: ../include/admin/notice.php:119
 msgid "Import Demo Content"
 msgstr ""
 
-#: ../include/admin/notice.php:106
-msgid "Clicking the button will install and activate the \"Hoot Import\" plugin."
+#: ../include/admin/notice.php:120
+msgid "Import demo data to get familiar with the theme."
 msgstr ""
 
-#: ../include/admin/notice.php:180
+#: ../include/admin/notice.php:123
+#, php-format
+msgid "%1$sPro Tip:%2$s If you have existing content on your site, Import only the widgets and customizer settings."
+msgstr ""
+
+#: ../include/admin/notice.php:126
+msgid "Above button installs the \"Hoot Import\" plugin."
+msgstr ""
+
+#: ../include/admin/notice.php:204
 #, php-format
 msgid "WordPress encountered an unexpected error during the plugin installation.%1$sPlease %2$sclick this link%3$s to install the %5$s%4$s plugin%6$s directly."
 msgstr ""
@@ -2130,31 +2147,31 @@ msgstr ""
 msgid "No Tags"
 msgstr ""
 
-#: ../library/template.php:388
-msgid "With:"
-msgstr ""
-
-#: ../library/template.php:390
+#: ../library/template.php:389
 msgid "0 Comments"
 msgstr ""
 
-#: ../library/template.php:391
+#: ../library/template.php:390
 msgid "1 Comment"
 msgstr ""
 
-#: ../library/template.php:392
+#: ../library/template.php:391
 msgid "% Comments"
 msgstr ""
 
-#: ../library/template.php:398
+#: ../library/template.php:394
+msgid "With:"
+msgstr ""
+
+#: ../library/template.php:401
 msgid "Edit This"
 msgstr ""
 
-#: ../library/template.php:498
+#: ../library/template.php:501
 msgid "queries."
 msgstr ""
 
-#: ../library/template.php:500
+#: ../library/template.php:503
 msgid " seconds. "
 msgstr ""
 
