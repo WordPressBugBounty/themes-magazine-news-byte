@@ -76,7 +76,7 @@ final class Hoot_Theme_Customize_Pro {
 					'title'    => esc_html__( 'Magazine NewsByte', 'magazine-news-byte' ),
 					'priority' => 1,
 					'pro_text' => esc_html__( 'Premium', 'magazine-news-byte' ),
-					'pro_url'  => esc_url( admin_url('themes.php?page=magazine-news-byte-welcome') ),
+					'pro_url'  => admin_url('themes.php?page=magazine-news-byte-welcome'),
 				) )
 			)
 		);

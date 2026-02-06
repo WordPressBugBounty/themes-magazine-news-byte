@@ -436,6 +436,21 @@ if ( !function_exists( 'hoot_sanitize_fa' ) ):
 function hoot_sanitize_fa( $icon ) {
 	$icon = apply_filters( 'hoot_migration_icon', trim( $icon ) );
 	$migration = array(
+		'fa-airbnb' => 'fa-airbnb fab',
+		'fa-app-store' => 'fa-app-store fab',
+		'fa-app-store-ios' => 'fa-app-store-ios fab',
+		'fa-audible' => 'fa-audible fab',
+		'fa-bluesky' => 'fa-bluesky fab',
+		'fa-cash-app' => 'fa-cash-app fab',
+		'fa-figma' => 'fa-figma fab',
+		'fa-kickstarter' => 'fa-kickstarter fab',
+		'fa-medium' => 'fa-medium fab',
+		'fa-shopify' => 'fa-shopify fab',
+		'fa-threads' => 'fa-threads fab',
+		'fa-square-threads' => 'fa-square-threads fab',
+		'fa-x-twitter' => 'fa-x-twitter fab',
+		'fa-square-x-twitter' => 'fa-square-x-twitter fab',
+
 		'fa-500px' => 'fa-500px fab',
 		'fa-address-book' => 'fa-address-book fas',
 		'fa-address-book-o' => 'fa-address-book far',

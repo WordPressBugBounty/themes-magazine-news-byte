@@ -8,6 +8,7 @@
 
 #customize-controls .control-section-hoot-theme {}
 .control-section-hoot-theme .accordion-section-title { padding-top: 15px; }
+#customize-controls .control-section-hoot-theme .accordion-section-title:after { display: none; }
 #customize-controls .control-section-hoot-theme .accordion-section-title:hover,
 #customize-controls .control-section-hoot-theme .accordion-section-title:focus { background-color: #fff; }
 .control-section-hoot-theme .accordion-section-title .button { position: absolute; right: 10px; top: 50%; margin-top: -14px; text-transform: uppercase; -webkit-border-radius: 18px; border-radius: 18px; }

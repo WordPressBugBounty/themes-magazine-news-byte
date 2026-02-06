@@ -4638,3 +4638,19 @@ readers do not read off random characters that represent icons */
   font-family: 'Font Awesome 5 Brands Ext';
   content: "\e901";
 }
+.fa-square-threads:before {
+  font-family: 'Font Awesome 5 Brands Ext';
+  content: "\e902";
+}
+.fa-threads:before {
+  font-family: 'Font Awesome 5 Brands Ext';
+  content: "\e903";
+}
+.fa-bluesky:before {
+  font-family: 'Font Awesome 5 Brands Ext';
+  content: "\e904";
+}
+.fa-cash-app:before {
+  font-family: 'Font Awesome 5 Brands Ext';
+  content: "\e905";
+}

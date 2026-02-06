@@ -105,9 +105,9 @@ function magnb_customizer_options() {
 				 'https://demo.wphoot.com/magazine-news-byte/' .
 				 '" target="_blank"><span class="hoot-cust-link-head">' .
 				 '<i class="fas fa-eye"></i> ' .
-				 esc_html__( "Demo", 'magazine-news-byte') . 
+				 esc_html__( "Preview Demo", 'magazine-news-byte') . 
 				 '</span><span class="hoot-cust-link-desc">' .
-				 esc_html__( "Demo the theme features and options with sample content.", 'magazine-news-byte') .
+				 esc_html__( "View the Demo Site to preview the theme features and options.", 'magazine-news-byte') .
 				 '</span></a>';
 	$himplink = class_exists( 'HootImport' ) ? esc_url( admin_url( 'themes.php?page=hoot-import' ) ) : ( function_exists( 'magnb_abouttag' ) ? esc_url( admin_url( 'themes.php?page=' . magnb_abouttag( 'slug' ) . '-welcome&tab=plugins' ) ) : 'https://wphoot.com/support/magazine-news-byte/#docs-section-demo-content' );
 	$lcontent .= '<a class="hoot-cust-link" href="' .

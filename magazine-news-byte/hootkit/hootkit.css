@@ -1795,233 +1795,8 @@ a.cta-button {
 #page-wrapper .social-icons-widget .social-icons-icon:hover {
   color: #ffffff;
 }
-.social-icons-widget .fa-amazon-block {
-  background: #161413;
-}
-.social-icons-widget .fa-android-block {
-  background: #99cc00;
-}
-.social-icons-widget .fa-apple-block {
-  background: #000000;
-}
-.social-icons-widget .fa-bandcamp-block {
-  background: #659daa;
-}
-.social-icons-widget .fa-behance-block {
-  background: #4176fa;
-}
-.social-icons-widget .fa-bitbucket-block {
-  background: #183f73;
-}
-.social-icons-widget .fa-btc-block {
-  background: #f7931a;
-}
-.social-icons-widget .fa-buysellads-block {
-  background: #c30100;
-}
-.social-icons-widget .fa-codepen-block {
-  background: #000000;
-}
-.social-icons-widget .fa-codiepie-block {
-  background: #000000;
-}
-.social-icons-widget .fa-contao-block {
-  background: #f47c00;
-}
-.social-icons-widget .fa-dashcube-block {
-  background: #7f7f7f;
-}
-.social-icons-widget .fa-delicious-block {
-  background: #0002f5;
-}
-.social-icons-widget .fa-deviantart-block {
-  background: #5e7163;
-}
-.social-icons-widget .fa-digg-block {
-  background: #1b5791;
-}
-.social-icons-widget .fa-discord-block {
-  background: #5865f2;
-}
-.social-icons-widget .fa-dribbble-block {
-  background: #c6356b;
-}
-.social-icons-widget .fa-dropbox-block {
-  background: #0089d1;
-}
-.social-icons-widget .fa-eercast-block {
-  background: #f1592a;
-}
-.social-icons-widget .fa-envelope-block {
-  background: #e44321;
-}
-.social-icons-widget .fa-etsy-block {
-  background: #f26223;
-}
-.social-icons-widget .fa-facebook-block {
-  background: #1877f2;
-}
-.social-icons-widget .fa-flickr-block {
-  background: #0062dd;
-}
-.social-icons-widget .fa-forumbee-block {
-  background: #86ac2f;
-}
-.social-icons-widget .fa-foursquare-block {
-  background: #3ab6e8;
-}
-.social-icons-widget .fa-free-code-camp-block {
-  background: #4a2b0f;
-}
-.social-icons-widget .fa-get-pocket-block {
-  background: #ed4054;
-}
-.social-icons-widget .fa-github-block {
-  background: #000000;
-}
-.social-icons-widget .fa-google-block {
-  background: #ea4335;
-}
-.social-icons-widget .fa-google-plus-block {
-  background: #e44321;
-}
-.social-icons-widget .fa-google-wallet-block {
-  background: #1476c6;
-}
-.social-icons-widget .fa-houzz-block {
-  background: #4dbc15;
-}
-.social-icons-widget .fa-imdb-block {
-  background: #e6b91e;
-}
-.social-icons-widget .fa-instagram-block {
-  background: #3f729b;
-}
-.social-icons-widget .fa-jsfiddle-block {
-  background: #2b97f3;
-}
-.social-icons-widget .fa-lastfm-block {
-  background: #d2013b;
-}
-.social-icons-widget .fa-leanpub-block {
-  background: #231f20;
-}
-.social-icons-widget .fa-linkedin-block {
-  background: #00659b;
-}
-.social-icons-widget .fa-meetup-block {
-  background: #f20017;
-}
-.social-icons-widget .fa-mixcloud-block {
-  background: #25292b;
-}
-.social-icons-widget .fa-patreon-block {
-  background: #ff424d;
-}
-.social-icons-widget .fa-paypal-block {
-  background: #15477c;
-}
-.social-icons-widget .fa-pinterest-block {
-  background: #cf1d25;
-}
-.social-icons-widget .fa-quora-block {
-  background: #c51a00;
-}
-.social-icons-widget .fa-reddit-block {
-  background: #ff4500;
-}
-.social-icons-widget .fa-rss-block {
-  background: #ff6501;
-}
-.social-icons-widget .fa-scribd-block {
-  background: #1a7bba;
-}
-.social-icons-widget .fa-slack-block {
-  background: #352931;
-}
-.social-icons-widget .fa-slideshare-block {
-  background: #0ca8aa;
-}
-.social-icons-widget .fa-snapchat-block {
-  background: #fffc00;
-}
-.social-icons-widget .fa-soundcloud-block {
-  background: #ff6600;
-}
-.social-icons-widget .fa-spotify-block {
-  background: #79b800;
-}
-.social-icons-widget .fa-stack-exchange-block {
-  background: #205297;
-}
-.social-icons-widget .fa-stack-overflow-block {
-  background: #f47c23;
-}
-.social-icons-widget .fa-steam-block {
-  background: #000000;
-}
-.social-icons-widget .fa-stumbleupon-block {
-  background: #ee4723;
-}
-.social-icons-widget .fa-telegram-plane-block {
-  background: #28a8e9;
-}
-.social-icons-widget .fa-tiktok-block {
-  background: #000000;
-}
-.social-icons-widget .fa-trello-block {
-  background: #0089d9;
-}
-.social-icons-widget .fa-tripadvisor-block {
-  background: #589442;
-}
-.social-icons-widget .fa-tumblr-block {
-  background: #3e5976;
-}
-.social-icons-widget .fa-twitch-block {
-  background: #6542a6;
-}
-.social-icons-widget .fa-twitter-block {
-  background: #32ccfe;
-}
-.social-icons-widget .fa-viadeo-block {
-  background: #f07355;
-}
-.social-icons-widget .fa-vimeo-square-block {
-  background: #1bb6ec;
-}
-.social-icons-widget .fa-vk-block {
-  background: #507299;
-}
-.social-icons-widget .fa-whatsapp-block {
-  background: #41d251;
-}
-.social-icons-widget .fa-wikipedia-w-block {
-  background: #000000;
-}
-.social-icons-widget .fa-windows-block {
-  background: #0078d7;
-}
-.social-icons-widget .fa-wordpress-block {
-  background: #3378b0;
-}
-.social-icons-widget .fa-x-twitter-block {
-  background: #000000;
-}
-.social-icons-widget .fa-square-x-twitter-block {
-  background: #000000;
-}
-.social-icons-widget .fa-xing-block {
-  background: #cfdc00;
-}
-.social-icons-widget .fa-y-combinator-block {
-  background: #f26522;
-}
-.social-icons-widget .fa-yelp-block {
-  background: #c41200;
-}
-.social-icons-widget .fa-youtube-block {
-  background: #d4231e;
+.social-icons-widget .social-icons-icon {
+  background: var(--hkit-sicon);
 }
 .social-icons-invert .social-icons-icon {
   background: none;
@@ -2034,233 +1809,8 @@ a.cta-button {
 .social-icons-invert .social-icons-icon:hover:before {
   display: none;
 }
-.social-icons-invert .fa-amazon-block:hover {
-  background: #161413;
-}
-.social-icons-invert .fa-android-block:hover {
-  background: #99cc00;
-}
-.social-icons-invert .fa-apple-block:hover {
-  background: #000000;
-}
-.social-icons-invert .fa-bandcamp-block:hover {
-  background: #659daa;
-}
-.social-icons-invert .fa-behance-block:hover {
-  background: #4176fa;
-}
-.social-icons-invert .fa-bitbucket-block:hover {
-  background: #183f73;
-}
-.social-icons-invert .fa-btc-block:hover {
-  background: #f7931a;
-}
-.social-icons-invert .fa-buysellads-block:hover {
-  background: #c30100;
-}
-.social-icons-invert .fa-codepen-block:hover {
-  background: #000000;
-}
-.social-icons-invert .fa-codiepie-block:hover {
-  background: #000000;
-}
-.social-icons-invert .fa-contao-block:hover {
-  background: #f47c00;
-}
-.social-icons-invert .fa-dashcube-block:hover {
-  background: #7f7f7f;
-}
-.social-icons-invert .fa-delicious-block:hover {
-  background: #0002f5;
-}
-.social-icons-invert .fa-deviantart-block:hover {
-  background: #5e7163;
-}
-.social-icons-invert .fa-digg-block:hover {
-  background: #1b5791;
-}
-.social-icons-invert .fa-discord-block:hover {
-  background: #5865f2;
-}
-.social-icons-invert .fa-dribbble-block:hover {
-  background: #c6356b;
-}
-.social-icons-invert .fa-dropbox-block:hover {
-  background: #0089d1;
-}
-.social-icons-invert .fa-eercast-block:hover {
-  background: #f1592a;
-}
-.social-icons-invert .fa-envelope-block:hover {
-  background: #e44321;
-}
-.social-icons-invert .fa-etsy-block:hover {
-  background: #f26223;
-}
-.social-icons-invert .fa-facebook-block:hover {
-  background: #1877f2;
-}
-.social-icons-invert .fa-flickr-block:hover {
-  background: #0062dd;
-}
-.social-icons-invert .fa-forumbee-block:hover {
-  background: #86ac2f;
-}
-.social-icons-invert .fa-foursquare-block:hover {
-  background: #3ab6e8;
-}
-.social-icons-invert .fa-free-code-camp-block:hover {
-  background: #4a2b0f;
-}
-.social-icons-invert .fa-get-pocket-block:hover {
-  background: #ed4054;
-}
-.social-icons-invert .fa-github-block:hover {
-  background: #000000;
-}
-.social-icons-invert .fa-google-block:hover {
-  background: #ea4335;
-}
-.social-icons-invert .fa-google-plus-block:hover {
-  background: #e44321;
-}
-.social-icons-invert .fa-google-wallet-block:hover {
-  background: #1476c6;
-}
-.social-icons-invert .fa-houzz-block:hover {
-  background: #4dbc15;
-}
-.social-icons-invert .fa-imdb-block:hover {
-  background: #e6b91e;
-}
-.social-icons-invert .fa-instagram-block:hover {
-  background: #3f729b;
-}
-.social-icons-invert .fa-jsfiddle-block:hover {
-  background: #2b97f3;
-}
-.social-icons-invert .fa-lastfm-block:hover {
-  background: #d2013b;
-}
-.social-icons-invert .fa-leanpub-block:hover {
-  background: #231f20;
-}
-.social-icons-invert .fa-linkedin-block:hover {
-  background: #00659b;
-}
-.social-icons-invert .fa-meetup-block:hover {
-  background: #f20017;
-}
-.social-icons-invert .fa-mixcloud-block:hover {
-  background: #25292b;
-}
-.social-icons-invert .fa-patreon-block:hover {
-  background: #ff424d;
-}
-.social-icons-invert .fa-paypal-block:hover {
-  background: #15477c;
-}
-.social-icons-invert .fa-pinterest-block:hover {
-  background: #cf1d25;
-}
-.social-icons-invert .fa-quora-block:hover {
-  background: #c51a00;
-}
-.social-icons-invert .fa-reddit-block:hover {
-  background: #ff4500;
-}
-.social-icons-invert .fa-rss-block:hover {
-  background: #ff6501;
-}
-.social-icons-invert .fa-scribd-block:hover {
-  background: #1a7bba;
-}
-.social-icons-invert .fa-slack-block:hover {
-  background: #352931;
-}
-.social-icons-invert .fa-slideshare-block:hover {
-  background: #0ca8aa;
-}
-.social-icons-invert .fa-snapchat-block:hover {
-  background: #fffc00;
-}
-.social-icons-invert .fa-soundcloud-block:hover {
-  background: #ff6600;
-}
-.social-icons-invert .fa-spotify-block:hover {
-  background: #79b800;
-}
-.social-icons-invert .fa-stack-exchange-block:hover {
-  background: #205297;
-}
-.social-icons-invert .fa-stack-overflow-block:hover {
-  background: #f47c23;
-}
-.social-icons-invert .fa-steam-block:hover {
-  background: #000000;
-}
-.social-icons-invert .fa-stumbleupon-block:hover {
-  background: #ee4723;
-}
-.social-icons-invert .fa-telegram-plane-block:hover {
-  background: #28a8e9;
-}
-.social-icons-invert .fa-tiktok-block:hover {
-  background: #000000;
-}
-.social-icons-invert .fa-trello-block:hover {
-  background: #0089d9;
-}
-.social-icons-invert .fa-tripadvisor-block:hover {
-  background: #589442;
-}
-.social-icons-invert .fa-tumblr-block:hover {
-  background: #3e5976;
-}
-.social-icons-invert .fa-twitch-block:hover {
-  background: #6542a6;
-}
-.social-icons-invert .fa-twitter-block:hover {
-  background: #32ccfe;
-}
-.social-icons-invert .fa-viadeo-block:hover {
-  background: #f07355;
-}
-.social-icons-invert .fa-vimeo-square-block:hover {
-  background: #1bb6ec;
-}
-.social-icons-invert .fa-vk-block:hover {
-  background: #507299;
-}
-.social-icons-invert .fa-whatsapp-block:hover {
-  background: #41d251;
-}
-.social-icons-invert .fa-wikipedia-w-block:hover {
-  background: #000000;
-}
-.social-icons-invert .fa-windows-block:hover {
-  background: #0078d7;
-}
-.social-icons-invert .fa-wordpress-block:hover {
-  background: #3378b0;
-}
-.social-icons-invert .fa-x-twitter-block:hover {
-  background: #000000;
-}
-.social-icons-invert .fa-square-x-twitter-block:hover {
-  background: #000000;
-}
-.social-icons-invert .fa-xing-block:hover {
-  background: #cfdc00;
-}
-.social-icons-invert .fa-y-combinator-block:hover {
-  background: #f26522;
-}
-.social-icons-invert .fa-yelp-block:hover {
-  background: #c41200;
-}
-.social-icons-invert .fa-youtube-block:hover {
-  background: #d4231e;
+.social-icons-invert .social-icons-icon:hover {
+  background: var(--hkit-sicon);
 }
 .fa-skype-block {
   position: relative;
@@ -2327,6 +1877,277 @@ a.cta-button {
 }
 .header-part .social-icons-icon {
   border: none;
+}
+/*** Social Colors ***/
+.social-icons-widget {
+  --hkit-sicon: #000000;
+}
+.fa-amazon-block {
+  --hkit-sicon: #161413;
+}
+.fa-android-block {
+  --hkit-sicon: #99cc00;
+}
+.fa-apple-block {
+  --hkit-sicon: #000000;
+}
+.fa-bandcamp-block {
+  --hkit-sicon: #659daa;
+}
+.fa-behance-block {
+  --hkit-sicon: #4176fa;
+}
+.fa-bitbucket-block {
+  --hkit-sicon: #183f73;
+}
+.fa-btc-block {
+  --hkit-sicon: #f7931a;
+}
+.fa-buysellads-block {
+  --hkit-sicon: #c30100;
+}
+.fa-codepen-block {
+  --hkit-sicon: #000000;
+}
+.fa-codiepie-block {
+  --hkit-sicon: #000000;
+}
+.fa-contao-block {
+  --hkit-sicon: #f47c00;
+}
+.fa-dashcube-block {
+  --hkit-sicon: #7f7f7f;
+}
+.fa-delicious-block {
+  --hkit-sicon: #0002f5;
+}
+.fa-deviantart-block {
+  --hkit-sicon: #5e7163;
+}
+.fa-digg-block {
+  --hkit-sicon: #1b5791;
+}
+.fa-discord-block {
+  --hkit-sicon: #5865f2;
+}
+.fa-dribbble-block {
+  --hkit-sicon: #c6356b;
+}
+.fa-dropbox-block {
+  --hkit-sicon: #0089d1;
+}
+.fa-eercast-block {
+  --hkit-sicon: #f1592a;
+}
+.fa-envelope-block {
+  --hkit-sicon: #e44321;
+}
+.fa-etsy-block {
+  --hkit-sicon: #f26223;
+}
+.fa-facebook-block {
+  --hkit-sicon: #1877f2;
+}
+.fa-flickr-block {
+  --hkit-sicon: #0062dd;
+}
+.fa-forumbee-block {
+  --hkit-sicon: #86ac2f;
+}
+.fa-foursquare-block {
+  --hkit-sicon: #3ab6e8;
+}
+.fa-free-code-camp-block {
+  --hkit-sicon: #4a2b0f;
+}
+.fa-get-pocket-block {
+  --hkit-sicon: #ed4054;
+}
+.fa-github-block {
+  --hkit-sicon: #000000;
+}
+.fa-google-block {
+  --hkit-sicon: #ea4335;
+}
+.fa-google-plus-block {
+  --hkit-sicon: #e44321;
+}
+.fa-google-wallet-block {
+  --hkit-sicon: #1476c6;
+}
+.fa-houzz-block {
+  --hkit-sicon: #4dbc15;
+}
+.fa-imdb-block {
+  --hkit-sicon: #e6b91e;
+}
+.fa-instagram-block {
+  --hkit-sicon: #3f729b;
+}
+.fa-jsfiddle-block {
+  --hkit-sicon: #2b97f3;
+}
+.fa-lastfm-block {
+  --hkit-sicon: #d2013b;
+}
+.fa-leanpub-block {
+  --hkit-sicon: #231f20;
+}
+.fa-linkedin-block {
+  --hkit-sicon: #00659b;
+}
+.fa-meetup-block {
+  --hkit-sicon: #f20017;
+}
+.fa-mixcloud-block {
+  --hkit-sicon: #25292b;
+}
+.fa-patreon-block {
+  --hkit-sicon: #ff424d;
+}
+.fa-paypal-block {
+  --hkit-sicon: #15477c;
+}
+.fa-pinterest-block {
+  --hkit-sicon: #cf1d25;
+}
+.fa-quora-block {
+  --hkit-sicon: #c51a00;
+}
+.fa-reddit-block {
+  --hkit-sicon: #ff4500;
+}
+.fa-rss-block {
+  --hkit-sicon: #ff6501;
+}
+.fa-scribd-block {
+  --hkit-sicon: #1a7bba;
+}
+.fa-skype-block {
+  --hkit-sicon: #00aff0;
+}
+.fa-slack-block {
+  --hkit-sicon: #352931;
+}
+.fa-slideshare-block {
+  --hkit-sicon: #0ca8aa;
+}
+.fa-snapchat-block {
+  --hkit-sicon: #fffc00;
+}
+.fa-soundcloud-block {
+  --hkit-sicon: #ff6600;
+}
+.fa-spotify-block {
+  --hkit-sicon: #79b800;
+}
+.fa-stack-exchange-block {
+  --hkit-sicon: #205297;
+}
+.fa-stack-overflow-block {
+  --hkit-sicon: #f47c23;
+}
+.fa-steam-block {
+  --hkit-sicon: #000000;
+}
+.fa-stumbleupon-block {
+  --hkit-sicon: #ee4723;
+}
+.fa-telegram-plane-block {
+  --hkit-sicon: #28a8e9;
+}
+.fa-tiktok-block {
+  --hkit-sicon: #000000;
+}
+.fa-trello-block {
+  --hkit-sicon: #0089d9;
+}
+.fa-tripadvisor-block {
+  --hkit-sicon: #589442;
+}
+.fa-tumblr-block {
+  --hkit-sicon: #3e5976;
+}
+.fa-twitch-block {
+  --hkit-sicon: #6542a6;
+}
+.fa-twitter-block {
+  --hkit-sicon: #32ccfe;
+}
+.fa-viadeo-block {
+  --hkit-sicon: #f07355;
+}
+.fa-vimeo-square-block {
+  --hkit-sicon: #1bb6ec;
+}
+.fa-vk-block {
+  --hkit-sicon: #507299;
+}
+.fa-whatsapp-block {
+  --hkit-sicon: #41d251;
+}
+.fa-wikipedia-w-block {
+  --hkit-sicon: #000000;
+}
+.fa-windows-block {
+  --hkit-sicon: #0078d7;
+}
+.fa-wordpress-block {
+  --hkit-sicon: #3378b0;
+}
+.fa-xing-block {
+  --hkit-sicon: #cfdc00;
+}
+.fa-y-combinator-block {
+  --hkit-sicon: #f26522;
+}
+.fa-yelp-block {
+  --hkit-sicon: #c41200;
+}
+.fa-youtube-block {
+  --hkit-sicon: #d4231e;
+}
+.fa-airbnb-block {
+  --hkit-sicon: #d95358;
+}
+.fa-app-store-block {
+  --hkit-sicon: #1a99f1;
+}
+.fa-app-store-ios-block {
+  --hkit-sicon: #1a99f1;
+}
+.fa-audible-block {
+  --hkit-sicon: #f39100;
+}
+.fa-bluesky-block {
+  --hkit-sicon: #1081f6;
+}
+.fa-cash-app-block {
+  --hkit-sicon: #00cf2f;
+}
+.fa-figma-block {
+  --hkit-sicon: #9d56f7;
+}
+.fa-kickstarter-block {
+  --hkit-sicon: #00ad54;
+}
+.fa-medium-block {
+  --hkit-sicon: #000000;
+}
+.fa-shopify-block {
+  --hkit-sicon: #90b945;
+}
+.fa-threads-block {
+  --hkit-sicon: #000000;
+}
+.fa-square-threads-block {
+  --hkit-sicon: #000000;
+}
+.fa-x-twitter-block {
+  --hkit-sicon: #000000;
+}
+.fa-square-x-twitter-block {
+  --hkit-sicon: #000000;
 }
 /**
  * Widget - Post Grid

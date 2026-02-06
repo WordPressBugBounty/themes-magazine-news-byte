@@ -1,6 +1,6 @@
 /*
- * jQuery Superfish Menu Plugin - v1.7.9
- * Copyright (c) 2016 Joel Birch
+ * jQuery Superfish Menu Plugin - v1.7.10
+ * Copyright (c) 2018 Joel Birch
  * {WPHOOT modified}
  *
  * Dual licensed under the MIT and GPL licenses:
@@ -201,7 +201,9 @@
 					$this.off('.superfish').off('.hoverIntent');
 					// clear animation's inline display style
 					$hasPopUp.children(o.popUpSelector).attr('style', function (i, style) {
-						return style.replace(/display[^;]+;?/g, '');
+						if (typeof style !== 'undefined') {
+							return style.replace(/display[^;]+;?/g, '');
+						}
 					});
 					// reset 'current' path classes
 					o.$path.removeClass(o.hoverClass + ' ' + c.bcClass).addClass(o.pathClass);

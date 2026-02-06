@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Magazine News Byte\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-17 00:45+0530\n"
+"POT-Creation-Date: 2026-01-07 16:13+0530\n"
 "PO-Revision-Date: 2021-07-08 00:30+0530\n"
 "Last-Translator: wpHoot <admin@wphoot.com>\n"
 "Language-Team: wpHoot <admin@wphoot.com>\n"
@@ -303,7 +303,7 @@ msgstr ""
 #: ../include/admin/about.php:501
 #, php-format
 msgid ""
-"Users often want to create a landing Homepage/Frontpage to welcome their visitors, while a separate 'Blog' page to list all their blog posts. To do this, follow these steps:%9$s%1$s\n"
+"By default WordPress displays blog posts on the frontpage.%9$s%9$sHowever many users want a dedicated frontpage to welcome visitors and a separate page to display their blog posts. To set this up, follow these steps:%9$s%1$s\n"
 "\t\t\t%3$sIn your wp-admin area, click %11$sPages > Add New%12$s%4$s\n"
 "\t\t\t%3$sGive page a Title %7$s(lets call it \"My Home Page\")%8$s and %5$sPublish%6$s%4$s\n"
 "\t\t\t%3$sIn your wp-admin area, click %11$sPages > Add New%12$s%4$s\n"
@@ -414,11 +414,11 @@ msgid "Demo Install / Support"
 msgstr ""
 
 #: ../include/admin/customizer-options.php:108
-msgid "Demo"
+msgid "Preview Demo"
 msgstr ""
 
 #: ../include/admin/customizer-options.php:110
-msgid "Demo the theme features and options with sample content."
+msgid "View the Demo Site to preview the theme features and options."
 msgstr ""
 
 #: ../include/admin/customizer-options.php:117
@@ -707,7 +707,7 @@ msgstr ""
 msgid "Small"
 msgstr ""
 
-#: ../include/admin/customizer-options.php:509
+#: ../include/admin/customizer-options.php:509 ../library/enum.php:370
 msgid "Medium"
 msgstr ""
 
@@ -1178,7 +1178,7 @@ msgstr ""
 msgid "default: Continue Reading"
 msgstr ""
 
-#: ../include/admin/customizer-options.php:1020 ../include/theme-setup.php:223
+#: ../include/admin/customizer-options.php:1020 ../include/theme-setup.php:222
 msgid "Continue Reading"
 msgstr ""
 
@@ -1340,7 +1340,7 @@ msgid "Magazine NewsByte"
 msgstr ""
 
 #: ../include/admin/functions.php:28
-msgid "Magazine NewsByte Options"
+msgid "Magazine NewsByte Dashboard"
 msgstr ""
 
 #: ../include/admin/media.php:40
@@ -1379,46 +1379,46 @@ msgstr ""
 msgid "Please Wait. This may take a while..."
 msgstr ""
 
-#: ../include/admin/notice.php:98
+#: ../include/admin/notice.php:103
 #, php-format
 msgid "Thank you for choosing %1$s!"
 msgstr ""
 
-#: ../include/admin/notice.php:102
+#: ../include/admin/notice.php:107
 #, php-format
 msgid "To get started and fully take advantage of our theme, please make sure you visit the welcome page for the %1$sQuick Start Guide%2$s."
 msgstr ""
 
-#: ../include/admin/notice.php:110
+#: ../include/admin/notice.php:115
 msgid "Install Hoot Kit"
 msgstr ""
 
-#: ../include/admin/notice.php:111
+#: ../include/admin/notice.php:116
 msgid "Add Sliders and Widgets developed and designed specifically for the theme."
 msgstr ""
 
-#: ../include/admin/notice.php:113
+#: ../include/admin/notice.php:118
 msgid "Above button installs the \"HootKit\" plugin."
 msgstr ""
 
-#: ../include/admin/notice.php:119
+#: ../include/admin/notice.php:124
 msgid "Import Demo Content"
 msgstr ""
 
-#: ../include/admin/notice.php:120
+#: ../include/admin/notice.php:125
 msgid "Import demo data to get familiar with the theme."
 msgstr ""
 
-#: ../include/admin/notice.php:123
+#: ../include/admin/notice.php:128
 #, php-format
 msgid "%1$sPro Tip:%2$s If you have existing content on your site, Import only the widgets and customizer settings."
 msgstr ""
 
-#: ../include/admin/notice.php:126
+#: ../include/admin/notice.php:131
 msgid "Above button installs the \"Hoot Import\" plugin."
 msgstr ""
 
-#: ../include/admin/notice.php:204
+#: ../include/admin/notice.php:209
 #, php-format
 msgid "WordPress encountered an unexpected error during the plugin installation.%1$sPlease %2$sclick this link%3$s to install the %5$s%4$s plugin%6$s directly."
 msgstr ""
@@ -1768,318 +1768,362 @@ msgid "Uppercase Light Italic"
 msgstr ""
 
 #: ../library/enum.php:324
-msgid "Amazon"
+msgid "Air Bnb"
 msgstr ""
 
 #: ../library/enum.php:325
-msgid "Android"
+msgid "Amazon"
 msgstr ""
 
 #: ../library/enum.php:326
-msgid "Apple"
+msgid "Android"
 msgstr ""
 
 #: ../library/enum.php:327
-msgid "Bandcamp"
+msgid "Apple"
 msgstr ""
 
 #: ../library/enum.php:328
-msgid "Behance"
+msgid "App Store"
 msgstr ""
 
 #: ../library/enum.php:329
-msgid "Bitbucket"
+msgid "App Store ios"
 msgstr ""
 
 #: ../library/enum.php:330
-msgid "BTC"
+msgid "Audible"
 msgstr ""
 
 #: ../library/enum.php:331
-msgid "BuySellAds"
+msgid "Bandcamp"
 msgstr ""
 
 #: ../library/enum.php:332
-msgid "Codepen"
+msgid "Behance"
 msgstr ""
 
 #: ../library/enum.php:333
-msgid "Codie Pie"
+msgid "Bitbucket"
 msgstr ""
 
 #: ../library/enum.php:334
-msgid "Contao"
+msgid "Bluesky"
 msgstr ""
 
 #: ../library/enum.php:335
-msgid "Dash Cube"
+msgid "BTC"
 msgstr ""
 
 #: ../library/enum.php:336
-msgid "Delicious"
+msgid "BuySellAds"
 msgstr ""
 
 #: ../library/enum.php:337
-msgid "Deviantart"
+msgid "Cash App"
 msgstr ""
 
 #: ../library/enum.php:338
-msgid "Digg"
+msgid "Codepen"
 msgstr ""
 
 #: ../library/enum.php:339
-msgid "Discord"
+msgid "Codie Pie"
 msgstr ""
 
 #: ../library/enum.php:340
-msgid "Dribbble"
+msgid "Contao"
 msgstr ""
 
 #: ../library/enum.php:341
-msgid "Dropbox"
+msgid "Dash Cube"
 msgstr ""
 
 #: ../library/enum.php:342
-msgid "Eercast"
+msgid "Delicious"
 msgstr ""
 
 #: ../library/enum.php:343
-msgid "Email"
+msgid "Deviantart"
 msgstr ""
 
 #: ../library/enum.php:344
-msgid "Etsy"
+msgid "Digg"
 msgstr ""
 
 #: ../library/enum.php:345
-msgid "Facebook"
+msgid "Discord"
 msgstr ""
 
 #: ../library/enum.php:346
-msgid "Flickr"
+msgid "Dribbble"
 msgstr ""
 
 #: ../library/enum.php:347
-msgid "Forumbee"
+msgid "Dropbox"
 msgstr ""
 
 #: ../library/enum.php:348
-msgid "Foursquare"
+msgid "Eercast"
 msgstr ""
 
 #: ../library/enum.php:349
-msgid "Free Code Camp"
+msgid "Email"
 msgstr ""
 
 #: ../library/enum.php:350
-msgid "Pocket (getpocket)"
+msgid "Etsy"
 msgstr ""
 
 #: ../library/enum.php:351
-msgid "Github"
+msgid "Facebook"
 msgstr ""
 
 #: ../library/enum.php:352
-msgid "Google"
+msgid "Figma"
 msgstr ""
 
 #: ../library/enum.php:353
-msgid "Google Plus"
+msgid "Flickr"
 msgstr ""
 
 #: ../library/enum.php:354
-msgid "Google Wallet"
+msgid "Forumbee"
 msgstr ""
 
 #: ../library/enum.php:355
-msgid "Houzz"
+msgid "Foursquare"
 msgstr ""
 
 #: ../library/enum.php:356
-msgid "IMDB"
+msgid "Free Code Camp"
 msgstr ""
 
 #: ../library/enum.php:357
-msgid "Instagram"
+msgid "Pocket (getpocket)"
 msgstr ""
 
 #: ../library/enum.php:358
-msgid "JS Fiddle"
+msgid "Github"
 msgstr ""
 
 #: ../library/enum.php:359
-msgid "Last FM"
+msgid "Google"
 msgstr ""
 
 #: ../library/enum.php:360
-msgid "Leanpub"
+msgid "Google Plus"
 msgstr ""
 
 #: ../library/enum.php:361
-msgid "Linkedin"
+msgid "Google Wallet"
 msgstr ""
 
 #: ../library/enum.php:362
-msgid "Meetup"
+msgid "Houzz"
 msgstr ""
 
 #: ../library/enum.php:363
-msgid "Mixcloud"
+msgid "IMDB"
 msgstr ""
 
 #: ../library/enum.php:364
-msgid "Patreon"
+msgid "Instagram"
 msgstr ""
 
 #: ../library/enum.php:365
-msgid "Paypal"
+msgid "JS Fiddle"
 msgstr ""
 
 #: ../library/enum.php:366
-msgid "Pinterest"
+msgid "Kickstarter"
 msgstr ""
 
 #: ../library/enum.php:367
-msgid "Quora"
+msgid "Last FM"
 msgstr ""
 
 #: ../library/enum.php:368
-msgid "Reddit"
+msgid "Leanpub"
 msgstr ""
 
 #: ../library/enum.php:369
-msgid "RSS"
-msgstr ""
-
-#: ../library/enum.php:370
-msgid "Scribd"
+msgid "Linkedin"
 msgstr ""
 
 #: ../library/enum.php:371
-msgid "Skype"
+msgid "Meetup"
 msgstr ""
 
 #: ../library/enum.php:372
-msgid "Slack"
+msgid "Mixcloud"
 msgstr ""
 
 #: ../library/enum.php:373
-msgid "Slideshare"
+msgid "Patreon"
 msgstr ""
 
 #: ../library/enum.php:374
-msgid "Snapchat"
+msgid "Paypal"
 msgstr ""
 
 #: ../library/enum.php:375
-msgid "Soundcloud"
+msgid "Pinterest"
 msgstr ""
 
 #: ../library/enum.php:376
-msgid "Spotify"
+msgid "Quora"
 msgstr ""
 
 #: ../library/enum.php:377
-msgid "Stack Exchange"
+msgid "Reddit"
 msgstr ""
 
 #: ../library/enum.php:378
-msgid "Stack Overflow"
+msgid "RSS"
 msgstr ""
 
 #: ../library/enum.php:379
-msgid "Steam"
+msgid "Scribd"
 msgstr ""
 
 #: ../library/enum.php:380
-msgid "Stumbleupon"
+msgid "Shopify"
 msgstr ""
 
 #: ../library/enum.php:381
-msgid "TikTok"
+msgid "Skype"
 msgstr ""
 
 #: ../library/enum.php:382
-msgid "Trello"
+msgid "Slack"
 msgstr ""
 
 #: ../library/enum.php:383
-msgid "Telegram"
+msgid "Slideshare"
 msgstr ""
 
 #: ../library/enum.php:384
-msgid "Trip Advisor"
+msgid "Snapchat"
 msgstr ""
 
 #: ../library/enum.php:385
-msgid "Tumblr"
+msgid "Soundcloud"
 msgstr ""
 
 #: ../library/enum.php:386
-msgid "Twitch"
+msgid "Spotify"
 msgstr ""
 
 #: ../library/enum.php:387
-msgid "Twitter"
+msgid "Stack Exchange"
 msgstr ""
 
 #: ../library/enum.php:388
-msgid "Viadeo"
+msgid "Stack Overflow"
 msgstr ""
 
 #: ../library/enum.php:389
-msgid "Vimeo"
+msgid "Steam"
 msgstr ""
 
 #: ../library/enum.php:390
-msgid "VK"
+msgid "Stumbleupon"
 msgstr ""
 
 #: ../library/enum.php:391
-msgid "Whatsapp"
+msgid "Threads"
 msgstr ""
 
 #: ../library/enum.php:392
-msgid "Wikipedia"
+msgid "Threads Square"
 msgstr ""
 
 #: ../library/enum.php:393
-msgid "Windows"
+msgid "TikTok"
 msgstr ""
 
-#: ../library/enum.php:394 ../library/template.php:172
-msgid "WordPress"
+#: ../library/enum.php:394
+msgid "Trello"
 msgstr ""
 
 #: ../library/enum.php:395
-msgid "X (Twitter)"
+msgid "Telegram"
 msgstr ""
 
 #: ../library/enum.php:396
-msgid "X (Twitter) Square"
+msgid "Trip Advisor"
 msgstr ""
 
 #: ../library/enum.php:397
-msgid "Xing"
+msgid "Tumblr"
 msgstr ""
 
 #: ../library/enum.php:398
-msgid "Y Combinator"
+msgid "Twitch"
 msgstr ""
 
 #: ../library/enum.php:399
-msgid "Yelp"
+msgid "Twitter"
 msgstr ""
 
 #: ../library/enum.php:400
+msgid "Viadeo"
+msgstr ""
+
+#: ../library/enum.php:401
+msgid "Vimeo"
+msgstr ""
+
+#: ../library/enum.php:402
+msgid "VK"
+msgstr ""
+
+#: ../library/enum.php:403
+msgid "Whatsapp"
+msgstr ""
+
+#: ../library/enum.php:404
+msgid "Wikipedia"
+msgstr ""
+
+#: ../library/enum.php:405
+msgid "Windows"
+msgstr ""
+
+#: ../library/enum.php:406 ../library/template.php:172
+msgid "WordPress"
+msgstr ""
+
+#: ../library/enum.php:407
+msgid "X (Twitter)"
+msgstr ""
+
+#: ../library/enum.php:408
+msgid "X (Twitter) Square"
+msgstr ""
+
+#: ../library/enum.php:409
+msgid "Xing"
+msgstr ""
+
+#: ../library/enum.php:410
+msgid "Y Combinator"
+msgstr ""
+
+#: ../library/enum.php:411
+msgid "Yelp"
+msgstr ""
+
+#: ../library/enum.php:412
 msgid "Youtube"
 msgstr ""
 
-#: ../library/enum.php:425
+#: ../library/enum.php:437
 msgid "Font Icons"
 msgstr ""
 
-#: ../library/enum.php:426
+#: ../library/enum.php:438
 msgid "Brands"
 msgstr ""
 

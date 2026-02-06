@@ -244,7 +244,7 @@ function magnb_appearance_subpage() {
 }
 
 /**
- * About Page displat Tab's content sections
+ * About Page display Tab's content sections
  *
  * @since 1.0
  * @access public
@@ -266,7 +266,7 @@ function magnb_tabsections( $string ) {
 
 					<?php if ( $style == 'hero-top' || $style == 'hero-bottom' ) :
 						if ( $style == 'hero-top' ) : ?>
-							<h4 class="heading"><?php echo $feature['name']; ?><cite><span><?php esc_html_e( '* Premium Feature', 'magazine-news-byte' ) ?></span></cite></h4>
+							<h4 class="heading"><?php echo $feature['name']; ?><?php if ( $string === 'features' ) echo '<cite><span>' . esc_html__( '* Premium Feature', 'magazine-news-byte' ) . '</span></cite>'; ?></h4>
 							<?php if ( !empty( $feature['desc'] ) ) echo '<div class="tabsection-hero-text">' . $feature['desc'] . '</div>'; ?>
 						<?php endif; ?>
 						<?php if ( !empty( $feature['img'] ) ) : ?>
@@ -275,7 +275,7 @@ function magnb_tabsections( $string ) {
 							</div>
 						<?php endif; ?>
 						<?php if ( $style == 'hero-bottom' ) : ?>
-							<h4 class="heading"><?php echo $feature['name']; ?><cite><span><?php esc_html_e( '* Premium Feature', 'magazine-news-byte' ) ?></span></cite></h4>
+							<h4 class="heading"><?php echo $feature['name']; ?><?php if ( $string === 'features' ) echo '<cite><span>' . esc_html__( '* Premium Feature', 'magazine-news-byte' ) . '</span></cite>'; ?></h4>
 							<?php if ( !empty( $feature['desc'] ) ) echo '<div class="tabsection-hero-text">' . $feature['desc'] . '</div>'; ?>
 						<?php endif; ?>
 
@@ -286,7 +286,7 @@ function magnb_tabsections( $string ) {
 							</div>
 							<div class="tabsection-side-textblock">
 								<?php if ( !empty( $feature['name'] ) ) : ?>
-									<h4 class="heading"><?php echo $feature['name']; ?><cite><span><?php esc_html_e( '* Premium Feature', 'magazine-news-byte' ) ?></span></cite></h4>
+									<h4 class="heading"><?php echo $feature['name']; ?><?php if ( $string === 'features' ) echo '<cite><span>' . esc_html__( '* Premium Feature', 'magazine-news-byte' ) . '</span></cite>'; ?></h4>
 								<?php endif; ?>
 								<?php if ( !empty( $feature['desc'] ) ) echo '<div class="tabsection-side-text">' . $feature['desc'] . '</div>'; ?>
 							</div>
@@ -304,7 +304,7 @@ function magnb_tabsections( $string ) {
 										</div>
 									<?php endif;
 									if ( !empty( $block['name'] ) ) : ?>
-										<h4 class="heading"><?php echo $block['name']; ?><cite><span><?php esc_html_e( '* Premium Feature', 'magazine-news-byte' ) ?></span></cite></h4>
+										<h4 class="heading"><?php echo $block['name']; ?><?php if ( $string === 'features' ) echo '<cite><span>' . esc_html__( '* Premium Feature', 'magazine-news-byte' ) . '</span></cite>'; ?></h4>
 									<?php endif;
 									if ( !empty( $block['desc'] ) ) echo '<div class="tabsection-aside-text">' . $block['desc'] . '</div>';
 								echo '</div>';
@@ -321,7 +321,7 @@ function magnb_tabsections( $string ) {
 						<?php endif; ?>
 						<div class="tabsection-std-textblock <?php if ( $style == 'img-bottom' ) echo 'attop'; else echo 'atbottom'; ?>">
 							<?php if ( !empty( $feature['name'] ) ) : ?>
-								<div class="tabsection-std-heading"><h4 class="heading"><?php echo $feature['name']; ?><cite><span><?php esc_html_e( '* Premium Feature', 'magazine-news-byte' ) ?></span></cite></h4></div>
+								<div class="tabsection-std-heading"><h4 class="heading"><?php echo $feature['name']; ?><?php if ( $string === 'features' ) echo '<cite><span>' . esc_html__( '* Premium Feature', 'magazine-news-byte' ) . '</span></cite>'; ?></h4></div>
 							<?php endif; ?>
 							<?php if ( !empty( $feature['desc'] ) ) echo '<div class="tabsection-std-text">' . $feature['desc'] . '</div>'; ?>
 							<div class="clear"></div>
@@ -498,7 +498,7 @@ function magnb_upstrings( $string ) {
 	$quickstart[] = array(
 		'name' => esc_html__( 'Setup Frontpage and Blog Page', 'magazine-news-byte' ),
 		/* Translators: The %s are placeholders for HTML, so the order can't be changed. */
-		'desc' => sprintf( esc_html__( 'Users often want to create a landing Homepage/Frontpage to welcome their visitors, while a separate \'Blog\' page to list all their blog posts. To do this, follow these steps:%9$s%1$s
+		'desc' => sprintf( esc_html__( 'By default WordPress displays blog posts on the frontpage.%9$s%9$sHowever many users want a dedicated frontpage to welcome visitors and a separate page to display their blog posts. To set this up, follow these steps:%9$s%1$s
 			%3$sIn your wp-admin area, click %11$sPages > Add New%12$s%4$s
 			%3$sGive page a Title %7$s(lets call it "My Home Page")%8$s and %5$sPublish%6$s%4$s
 			%3$sIn your wp-admin area, click %11$sPages > Add New%12$s%4$s

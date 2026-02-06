@@ -920,9 +920,9 @@ endif;
  */
 if ( !function_exists( 'magnb_ns_filter_avatar' ) ):
 function magnb_ns_filter_avatar( $avatar, $id_or_email, $size, $default, $alt, $args ) {
-	$headers = @get_headers( $args['url'] );
-	if( ! is_array( $headers ) || empty( $headers ) || ! preg_match( "|200|", $headers[0] ) ) return;
-	return $avatar;
+	$headers = wp_remote_head( $args['url'] );
+	$isavailable = is_array( $headers ) && ! is_wp_error( $headers ) && !empty( $headers['response'] ) && is_array( $headers['response'] ) && isset( $headers['response']['code'] ) && $headers['response']['code'] == 200;
+	return ( $isavailable ? $avatar : '' );
 }
 endif;
 

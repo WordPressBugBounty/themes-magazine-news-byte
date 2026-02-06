@@ -71,7 +71,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 }
 
 
-/** Hoot Import plugin **/
+/** Hoot-Import plugin **/
 
 // theme config
 if ( ! function_exists( 'magnb_hootimport_theme_config' ) ) {
@@ -79,7 +79,7 @@ if ( ! function_exists( 'magnb_hootimport_theme_config' ) ) {
 		$child = hoot_data( 'childtheme_name' );
 		$is_official_child = false;
 		if ( $child ) {
-			$checks = apply_filters( 'magnb_hootimport_theme_config_childtheme_array', array() );
+			$checks = apply_filters( 'magnb_theme_config_childtheme_array', array() );
 			foreach ( $checks as $check ) {
 				if ( stripos( $child, $check ) !== false ) {
 					$is_official_child = true;
@@ -92,7 +92,6 @@ if ( ! function_exists( 'magnb_hootimport_theme_config' ) ) {
 			'menu_title' => __( 'Import Magazine NewsByte Demo', 'magazine-news-byte' ),
 			'theme_name' => hoot_get_data( 'template_name' ),
 			'theme_version' => hoot_get_data( 'template_version' ),
-			'theme_img' => function_exists( 'magnb_abouttag' ) ? (  magnb_abouttag( 'fullshot' ) !==  magnb_abouttag( 'shot' ) ?  magnb_abouttag( 'fullshot' ) : '' ) : '',
 		) );
 	}
 }

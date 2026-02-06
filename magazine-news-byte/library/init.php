@@ -27,7 +27,7 @@ if ( !function_exists( 'hoot_lib_constants' ) ) :
 function hoot_lib_constants() {
 
 	// Set Hoot Version.
-	hoot_set_data( 'hoot_version', '3.0.3' );
+	hoot_set_data( 'hoot_version', '3.1.0' );
 
 	// Theme directory paths
 	hoot_set_data( 'template_dir', trailingslashit( get_template_directory() ) );
@@ -203,8 +203,13 @@ endif;
 if ( !function_exists( 'hoot_set_data' ) ) :
 function hoot_set_data( $key, $value, $override = true ) {
 	global $hoot_data;
-	if ( !isset( $hoot_data->$key ) || $override )
+	if ( !is_string( $key ) || empty( $key ) )
+		return false;
+	if ( !isset( $hoot_data->$key ) || $override ) {
 		$hoot_data->$key = $value;
+		return true;
+	}
+	return false;
 }
 endif;
 
@@ -219,8 +224,13 @@ endif;
 if ( !function_exists( 'hoot_unset_data' ) ) :
 function hoot_unset_data( $key ) {
 	global $hoot_data;
-	if ( isset( $hoot_data->$key ) )
+	if ( !is_string( $key ) || empty( $key ) )
+		return false;
+	if ( isset( $hoot_data->$key ) ) {
 		unset( $hoot_data->$key );
+		return true;
+	}
+	return false;
 }
 endif;
 

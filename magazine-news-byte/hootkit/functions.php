@@ -15,8 +15,6 @@ add_filter( 'hootkit_register', 'magnb_register_hootkit', 5 );
 // Set data for theme scripts localization. hootData is actually localized at priority 11, so populate data before that at priority 9
 // The theme's main script is loaded @11
 add_action( 'wp_enqueue_scripts', 'magnb_localize_hootkit', 9 );
-
-// Hootkit plugin loads its styles at default @10 (we skip this using config 'theme_css')
 // The theme's main style is loaded @12
 // The child's main style is loaded @18
 add_action( 'wp_enqueue_scripts', 'magnb_enqueue_hootkit', 14 );
@@ -41,14 +39,12 @@ function magnb_register_hootkit( $config ) {
 	$config = array(
 		'nohoot'    => false,
 		'theme_css' => true,
-		'modules'   => array( // @deprecated <= HootKit v1.2.0 @10.20 // @deprecated <= HootKit v2.0.3 @6.21
+		'modules'   => array(
 			'sliders'     => array( 'image', 'postimage' ),
 			'widgets'     => array( 'announce', 'content-blocks', 'content-posts-blocks', 'cta', 'icon', 'post-grid', 'post-list', 'social-icons', 'ticker', 'content-grid', 'cover-image', 'profile', 'ticker-posts', ),
 		),
 		'settings'  => array( 'cta-styles' ), // @deprecated <= HootKit v1.0.5 @12.18
 		'supports'  => array( 'cta-styles', 'content-blocks-style5', 'content-blocks-style6', 'slider-styles', 'post-grid-firstpost-slider', 'announce-headline', 'grid-widget', 'list-widget' ),
-			// @deprecated <= HootKit v1.1.3 @9.20 'post-grid-firstpost-slider' and 'announce-headline'
-			// @deprecated <= HootKit v1.1.3 @9.20 postgrid=>grid-widget postslist=>list-widget
 		'premium'   => array( 'carousel', 'postcarousel', 'postlistcarousel', 'contact-info', 'number-blocks', 'vcards', 'buttons', 'icon-list', 'notice', 'toggle', 'tabs', ),
 	);
 	return $config;
@@ -218,20 +214,6 @@ function magnb_hootkit_dynamic_cssrules() {
 							'background' => array( $accent_font, 'accent_font' ),
 							'color'      => array( $accent_color, 'accent_color' ),
 							),
-					) );
-	// @deprecated <= HootKit v1.1.0 @5.20 view-all
-	hoot_add_css_rule( array(
-						'selector'  => '.widget .view-all a:hover',
-						'property'  => 'color',
-						'value'     => $accent_color,
-						'idtag'     => 'accent_color',
-					) );
-	// @deprecated <= HootKit v1.1.0 @5.20 view-all
-	hoot_add_css_rule( array(
-						'selector'  => '.sidebar .view-all-top.view-all-withtitle a, .sub-footer .view-all-top.view-all-withtitle a, .footer .view-all-top.view-all-withtitle a, .sidebar .view-all-top.view-all-withtitle a:hover, .sub-footer .view-all-top.view-all-withtitle a:hover, .footer .view-all-top.view-all-withtitle a:hover',
-						'property'  => 'color',
-						'value'     => $accent_font,
-						'idtag'     => 'accent_font',
 					) );
 
 	if ( !empty( $widgetmargin ) ) :

@@ -80,16 +80,21 @@ add_action( 'admin_enqueue_scripts', 'magnb_admin_enqueue_notice_styles' );
 function magnb_add_welcome_notice() {
 	$slug = magnb_abouttag( 'slug' );
 	$themename = magnb_abouttag( 'name' );
-	$fullshot = magnb_abouttag( 'fullshot' );
+	$imgshot = magnb_abouttag( 'fullshot' );
+	$issmall = false;
+	if ( ! $imgshot ) {
+		$imgshot = magnb_abouttag( 'shot' );
+		$issmall = true;
+	}
 	$import_config = apply_filters( 'hootimport_theme_config', array() ); // Hoot Import has been configured for active theme
 	$display_import = ! empty( $import_config ) && ! get_option( "{$slug}-dismiss-import" );
 	$display_hootkit = ! class_exists( 'HootKit' );
 	?>
 	<div id="hoot-welcome-msg" class="hoot-welcome-msg notice notice-success is-dismissible">
 		<div class="hoot-welcome-content">
-			<?php if ( $fullshot ) : ?>
-				<a class="hoot-welcome-img <?php if ( $display_import || $display_hootkit ) { echo 'hoot-welcome-img--large'; } ?>" href="<?php echo esc_url( "https://demo.wphoot.com/magazine-news-byte" ); ?>" target="_blank">
-					<img class="hoot-welcome-screenshot" src="<?php echo esc_url( $fullshot ); ?>" alt="<?php echo esc_attr( $themename ); ?>" />
+			<?php if ( $imgshot ) : ?>
+				<a class="hoot-welcome-img <?php if ( $display_import || $display_hootkit ) { echo 'hoot-welcome-img--large'; } if ( $issmall ) { echo ' hoot-welcome-img--ss'; } ?>" href="<?php echo esc_url( "https://demo.wphoot.com/magazine-news-byte" ); ?>" target="_blank">
+					<img class="hoot-welcome-screenshot <?php if ( ! $issmall ) { echo 'hoot-welcome-scrollImg'; } ?>" src="<?php echo esc_url( $imgshot ); ?>" alt="<?php echo esc_attr( $themename ); ?>" />
 				</a>
 			<?php endif; ?>
 			<div class="hoot-welcome-text">
@@ -218,13 +223,12 @@ function magnb_processplugin() {
 			}
 		}
 	}
-
 	if ( 'activated' === $state ) {
 		if ( $plugin === 'hoot-import' ) {
-			$response['redirect'] = esc_url( admin_url( 'themes.php?page=hoot-import' ) );
+			$response['redirect'] = admin_url( 'themes.php?page=hoot-import' );
 			update_option( "{$slug}-dismiss-import", 1 );
 		} elseif ( $plugin === 'hootkit' ) {
-			$response['redirect'] = esc_url( admin_url( 'options-general.php?page=hootkit' ) );
+			$response['redirect'] = admin_url( 'options-general.php?page=hootkit' );
 		}
 	}
 

@@ -2,7 +2,7 @@
 Contributors: wphoot
 Tags: grid-layout, one-column, two-columns, three-columns, left-sidebar, right-sidebar, block-styles, custom-background, custom-colors, custom-header, custom-menu, custom-logo, featured-images, footer-widgets, full-width-template, microformats, sticky-post, theme-options, threaded-comments, translation-ready, wide-blocks, education, news, entertainment
 Requires at least: 5.4
-Tested up to: 6.6
+Tested up to: 6.9
 Requires PHP: 7.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -26,6 +26,18 @@ Magazine News Byte is a responsive WordPress theme with a clean modern design. F
 You can look at the theme instructions at https://wphoot.com/support/magazine-news-byte/ To get support beyond the scope of documentation provided, please open a support ticket via https://wphoot.com/support/
 
 == Changelog ==
+
+= 2.12.1 =
+* Replace @get_headers with wp_remote_head while getting avatar
+* WP 6.9 compatibility
+* Updated FA Brand Files (Social Profiles)
+
+= 2.12.0 =
+* Return bool success for hoot_set_data/hoot_unset_data functions
+* Remove deprecated HootKit's view-all
+* Code optimzation and standardized
+* Minor CSS and backend changes
+
 = 2.11.2 =
 * bugfix: Remove label 'With' when no comments and comments are closed
 * Fix image link for hoot import
