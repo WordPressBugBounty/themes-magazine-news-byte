@@ -111,7 +111,7 @@ jQuery(document).ready(function($) {
 
 	if( 'undefined' == typeof hootData.fitVids || 'enable' == hootData.fitVids ) {
 		if (jQuery.fn.fitVids)
-			$("#content").fitVids();
+			$("#page-wrapper").fitVids();
 	}
 
 	/*** Theia Sticky Sidebar ***/

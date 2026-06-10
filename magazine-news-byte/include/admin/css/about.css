@@ -10,8 +10,8 @@
 .hoot-about-ss img { max-width: 100%; }
 .hoot-about-text { margin-left: 270px; max-width: 680px; }
 .hoot-about-intro {}
-.hoot-about-textlinks a.button { margin-right: 5px; }
-.hoot-about-textlinks .dashicons { vertical-align: text-top; font-size: 1.4em; height: auto; }
+.hoot-about-textlinks a.button { margin: 5px; }
+#wpwrap .hoot-about-textlinks .dashicons { vertical-align: middle; font-size: 1.4em; height: auto; }
 
 /** Top button **/
 
@@ -34,13 +34,13 @@
 .hoot-tab .allcaps { text-transform: uppercase; }
 .hoot-tab .strikeout { text-decoration: line-through; }
 .hoot-tab .okgreen { color: #46b450; }
-.hoot-tab .dashicons { display: inline-block; width: auto; height: auto; font-size: 1.4em; vertical-align: middle; }
+#wpwrap .hoot-tab .dashicons { display: inline-block; width: auto; height: auto; font-size: 1.4em; vertical-align: middle; }
 .hoot-tab h2.centered { font-size: 4em; line-height: 1.2em; font-weight: lighter; margin-bottom: 0; }
 .hoot-tab h2 span { display: block; font-size: 1.4em; font-weight: normal; }
-.hoot-tab h2 strong { font-weight: bold; color: #0073aa; }
+.hoot-tab h2 strong { font-weight: bold; color: var(--wp-admin-theme-color); }
 .hoot-tab .hoot-tab-intro,
 .hoot-tab .hoot-tab-cta { color: #555d66; font-weight: 400; line-height: 1.6em; font-size: 19px; }
-.hoot-tab .hoot-tab-cta .button { font-size: inherit; line-height: inherit; height: auto; text-transform: uppercase; padding: 6px 18px; margin: 1em 1em 2em; font-weight: bold; /* min-width: 250px; */ }
+.hoot-tab .hoot-tab-cta .button { font-size: inherit; /*line-height: inherit;*/ height: auto; text-transform: uppercase; /*padding: 6px 18px;*/ margin: 1em 1em 2em; font-weight: bold; /* min-width: 250px; */ }
 .hoot-tab-intro em { font-size: 16px; }
 .hoot-tab-cta .primary-cta { box-shadow: none; }
 

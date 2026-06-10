@@ -1,4 +1,4 @@
-#hoot-welcome-msg { padding-left: 0; margin: 5px 0 25px; }
+#hoot-welcome-msg { padding-left: 0; padding-top: 0; padding-bottom: 0; margin: 5px 0 25px; }
 .hoot-welcome-msg {}
 .hoot-welcome-content { display: flex; align-items: center; }
 
@@ -11,7 +11,7 @@
 	overflow: hidden !important;
 	box-shadow: 0 0 6px 1px rgba(200,200,200,0.5);
 	position: relative;
-	max-height: 350px !important;
+	/* max-height: 350px !important; */
 }
 .hoot-welcome-img--large { width: 350px; }
 .hoot-welcome-img--ss { align-items: center; background: #fff; padding: 15px; box-sizing: border-box; max-height: none !important; }

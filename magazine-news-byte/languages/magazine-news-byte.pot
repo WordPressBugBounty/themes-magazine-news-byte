@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Magazine News Byte\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-07 16:13+0530\n"
+"POT-Creation-Date: 2026-06-07 01:45+0530\n"
 "PO-Revision-Date: 2021-07-08 00:30+0530\n"
 "Last-Translator: wpHoot <admin@wphoot.com>\n"
 "Language-Team: wpHoot <admin@wphoot.com>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;_e;_n;_x;_ex;_nx;esc_attr__;esc_attr_e;esc_attr_x;esc_html__;esc_html_e;esc_html_x;_n_noop;_nx_noop;translate_nooped_plural\n"
 "X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
@@ -1522,60 +1522,84 @@ msgstr ""
 msgid "Premium"
 msgstr ""
 
-#: ../include/blocks/wpblocks.php:41
+#: ../include/blocks/wpblocks.php:38
 msgid "Black"
 msgstr ""
 
-#: ../include/blocks/wpblocks.php:42
+#: ../include/blocks/wpblocks.php:39
 msgid "Cyan bluish gray"
 msgstr ""
 
-#: ../include/blocks/wpblocks.php:43
+#: ../include/blocks/wpblocks.php:40
 msgid "White"
 msgstr ""
 
-#: ../include/blocks/wpblocks.php:44
+#: ../include/blocks/wpblocks.php:41
 msgid "Pale pink"
 msgstr ""
 
-#: ../include/blocks/wpblocks.php:45
+#: ../include/blocks/wpblocks.php:42
 msgid "Vivid red"
 msgstr ""
 
-#: ../include/blocks/wpblocks.php:46
+#: ../include/blocks/wpblocks.php:43
 msgid "Luminous vivid orange"
 msgstr ""
 
-#: ../include/blocks/wpblocks.php:47
+#: ../include/blocks/wpblocks.php:44
 msgid "Luminous vivid amber"
 msgstr ""
 
-#: ../include/blocks/wpblocks.php:48
+#: ../include/blocks/wpblocks.php:45
 msgid "Light green cyan"
 msgstr ""
 
-#: ../include/blocks/wpblocks.php:49
+#: ../include/blocks/wpblocks.php:46
 msgid "Vivid green cyan"
 msgstr ""
 
-#: ../include/blocks/wpblocks.php:50
+#: ../include/blocks/wpblocks.php:47
 msgid "Pale cyan blue"
 msgstr ""
 
-#: ../include/blocks/wpblocks.php:51
+#: ../include/blocks/wpblocks.php:48
 msgid "Vivid cyan blue"
 msgstr ""
 
-#: ../include/blocks/wpblocks.php:52
+#: ../include/blocks/wpblocks.php:49
 msgid "Vivid purple"
 msgstr ""
 
-#: ../include/blocks/wpblocks.php:59
+#: ../include/blocks/wpblocks.php:53
 msgid "Theme Accent Color"
 msgstr ""
 
-#: ../include/blocks/wpblocks.php:66
+#: ../include/blocks/wpblocks.php:58
 msgid "Theme Accent Font Color"
+msgstr ""
+
+#: ../include/blocks/wpblocks.php:78
+msgid "Border"
+msgstr ""
+
+#: ../include/blocks/wpblocks.php:82
+msgid "Frame"
+msgstr ""
+
+#: ../include/blocks/wpblocks.php:86
+msgid "Checkmark"
+msgstr ""
+
+#: ../include/blocks/wpblocks.php:92
+msgid "Style 1"
+msgstr ""
+
+#: ../include/blocks/wpblocks.php:96
+msgid "Style 2"
+msgstr ""
+
+#: ../include/blocks/wpblocks.php:100
+msgid "Style 3"
 msgstr ""
 
 #: ../include/template-helpers.php:449

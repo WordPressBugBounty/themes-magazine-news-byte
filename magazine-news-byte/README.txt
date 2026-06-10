@@ -1,8 +1,8 @@
 === Magazine News Byte ===
 Contributors: wphoot
 Tags: grid-layout, one-column, two-columns, three-columns, left-sidebar, right-sidebar, block-styles, custom-background, custom-colors, custom-header, custom-menu, custom-logo, featured-images, footer-widgets, full-width-template, microformats, sticky-post, theme-options, threaded-comments, translation-ready, wide-blocks, education, news, entertainment
-Requires at least: 5.4
-Tested up to: 6.9
+Requires at least: 6.0
+Tested up to: 7.0
 Requires PHP: 7.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -26,6 +26,12 @@ Magazine News Byte is a responsive WordPress theme with a clean modern design. F
 You can look at the theme instructions at https://wphoot.com/support/magazine-news-byte/ To get support beyond the scope of documentation provided, please open a support ticket via https://wphoot.com/support/
 
 == Changelog ==
+
+= 2.12.2 =
+* Add 'responsive-embeds' theme support (fix fitvids script to work with default WP responsive-embeds)
+* Register block styles (heading, image, list)
+* Fix PHP warning for gravatar on author page when user may not have name / has been deleted (Ticket#12537)
+* Remove explicit CSS "text-align:center" for alignwide and alignfull classes (Ticket#12503)
 
 = 2.12.1 =
 * Replace @get_headers with wp_remote_head while getting avatar

@@ -2,7 +2,6 @@
 .alignwide,
 .alignfull {
   max-width: none;
-  text-align: center;
 }
 .sidebars0 .alignwide {
   margin-left: -3em;
@@ -244,4 +243,59 @@ body .is-layout-flex {
 [class*=wc-block].alignwide {
   margin-left: auto;
   margin-right: auto;
+}
+/************* Theme Styles *************/
+.wp-block-image.is-style-hoot-image-border img {
+  border: 3px solid;
+  border-color: var(--wp--preset--color--accent, inherit);
+}
+.wp-block-image.is-style-hoot-image-frame img {
+  border: 10px solid #e8e8e8;
+}
+.wp-block-heading.is-style-hoot-headblock1 {
+  border-left: 5px solid;
+  border-color: var(--wp--preset--color--accent, inherit);
+  padding-left: 0.4em;
+}
+.wp-block-heading.is-style-hoot-headblock2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.wp-block-heading.is-style-hoot-headblock2.has-text-align-left {
+  justify-content: flex-start;
+}
+.wp-block-heading.is-style-hoot-headblock2.has-text-align-center {
+  justify-content: center;
+}
+.wp-block-heading.is-style-hoot-headblock2.has-text-align-right {
+  justify-content: flex-end;
+}
+.wp-block-heading.is-style-hoot-headblock2:before,
+.wp-block-heading.is-style-hoot-headblock2:after {
+  content: "";
+  border-bottom: solid 3px;
+  width: 20px;
+}
+.wp-block-heading.is-style-hoot-headblock3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+.wp-block-heading.is-style-hoot-headblock3.has-text-align-left {
+  text-align: left;
+}
+.wp-block-heading.is-style-hoot-headblock3.has-text-align-center {
+  text-align: center;
+}
+.wp-block-heading.is-style-hoot-headblock3.has-text-align-right {
+  text-align: right;
+}
+.wp-block-heading.is-style-hoot-headblock3:before,
+.wp-block-heading.is-style-hoot-headblock3:after {
+  content: "";
+  border-bottom: solid 3px;
+  min-width: 20px;
+  flex-grow: 1;
 }

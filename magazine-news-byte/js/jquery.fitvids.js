@@ -51,8 +51,7 @@
       if(settings.ignore) {
         ignoreList = ignoreList + ', ' + settings.ignore;
       }
-
-      var $allVideos = $(this).find(selectors.join(','));
+      var $allVideos = $(this).find(selectors.join(',')).filter(function () { return $(this).closest('.wp-block-embed, .wp-block-embed__wrapper').length === 0; });
       $allVideos = $allVideos.not('object object'); // SwfObj conflict patch
       $allVideos = $allVideos.not(ignoreList); // Disable FitVids on this video.
 

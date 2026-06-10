@@ -1,42 +1,39 @@
 <?php
 /**
- * Blocks Setup
- * This file is loaded using 'after_setup_theme' hook at priority 10
- *
- * @package    Magazine News Byte
- * @subpackage Theme
+ * Hoot Theme hooked into the framework
  */
 
 /* === WordPress Blocks === */
 
-
 /** Add Gutenberg Wide Align support **/
-
 add_theme_support( 'align-wide' );
 
-
 /** Temporarily remove Gutenberg Widgets Screen **/
-
-if ( apply_filters( 'magnb_disable_widgets_block_editor', true ) ) {
+if ( apply_filters( 'hoot_disable_widgets_block_editor', true ) ) {
 	remove_theme_support( 'widgets-block-editor' );
 }
 
-
 /** Add slightly more opinionated styles for the front end **/
-
 add_theme_support( 'wp-block-styles' );
 
+/** Support custom line heights for paragraphs and headings **/
+add_theme_support( 'custom-line-height' );
 
 /** Custom spacing option for blocks like cover and group **/
-
 add_theme_support( 'custom-spacing' );
 
+/** Responsive embedded content **/
+add_theme_support( 'responsive-embeds' );
 
-/** Add accent colors to Block Pallete - hook to init to have default vals for accent via hoot_get_mod **/
 
-if ( apply_filters( 'magnb_editor_color_palette', true ) )
-	add_action( 'init', 'magnb_wpblock_color_palette' );
-function magnb_wpblock_color_palette(){
+/**
+ * Color Pallete
+ * Add accent colors to Block Pallete
+ */
+if ( apply_filters( 'hoot_editor_color_palette', true ) )
+	add_action( 'init', 'hoot_wpblock_color_palette' );
+function hoot_wpblock_color_palette(){
+	$palette = array();
 	$defaults = array(
 		'#000000' => array( 'black',                 __( 'Black', 'magazine-news-byte' ) ),
 		'#abb8c3' => array( 'cyan-bluish-gray',      __( 'Cyan bluish gray', 'magazine-news-byte' ) ),
@@ -51,39 +48,64 @@ function magnb_wpblock_color_palette(){
 		'#0693e3' => array( 'vivid-cyan-blue',       __( 'Vivid cyan blue', 'magazine-news-byte' ) ),
 		'#9b51e0' => array( 'vivid-purple',          __( 'Vivid purple', 'magazine-news-byte' ) ),
 	);
-	$load = false;
-	$palette = array();
-	$accent = hoot_get_mod( 'accent_color' );
-		$load = true;
+	if ( apply_filters( 'hoot_editor_accents', true, 'palette' ) ) {
 		$palette[] = array(
 			'name' => __( 'Theme Accent Color', 'magazine-news-byte' ),
 			'slug' => 'accent',
-			'color' => $accent
+			'color' => hoot_get_mod( 'accent_color' ),
 		);
-	$accentfont = hoot_get_mod( 'accent_font' );
-		$load = true;
 		$palette[] = array(
 			'name' => __( 'Theme Accent Font Color', 'magazine-news-byte' ),
 			'slug' => 'accent-font',
-			'color' => $accentfont
+			'color' => hoot_get_mod( 'accent_font' ),
 		);
-	if ( $load ) {
-		foreach ( $defaults as $key => $value )
-			if ( $key != $accent && $key != $accentfont )
-				$palette[] = array(
-					'name' => $value[1],
-					'slug' => $value[0],
-					'color' => $key
-				);
-		add_theme_support( 'editor-color-palette', $palette );
 	}
+	foreach ( $defaults as $key => $value ) {
+		$palette[] = array( 'name' => $value[1], 'slug' => $value[0], 'color' => $key );
+	}
+	add_theme_support( 'editor-color-palette', $palette );
 }
 
 
-/** Add Stylesheets **/
+/**
+ * Block Styles
+ */
 
-// This is loaded in both Frontend and Backend (HBS loads @10)
-// add_action( 'enqueue_block_assets', 'magnb_wpblock_assets', 12 );
+add_action( 'init', 'hoot_wpblock_styles' );
+function hoot_wpblock_styles() {
+	register_block_style( 'core/image', array(
+		'name'  => 'hoot-image-border',
+		'label' => esc_html__( 'Border', 'magazine-news-byte' ),
+	) );
+	register_block_style( 'core/image', array(
+		'name'  => 'hoot-image-frame',
+		'label' => esc_html__( 'Frame', 'magazine-news-byte' ),
+	) );
+	register_block_style( 'core/list', array(
+		'name'  => 'hoot-checklist',
+		'label' => __( 'Checkmark', 'magazine-news-byte' ),
+		'inline_style' =>	'div ul.is-style-hoot-checklist { list-style-type: "\2713"; }' .
+							'div ul.is-style-hoot-checklist li { padding-inline-start: 1ch; }',
+	) );
+	register_block_style( 'core/heading', array(
+		'name'  => 'hoot-headblock1',
+		'label' => __( 'Style 1', 'magazine-news-byte' ),
+	) );
+	register_block_style( 'core/heading', array(
+		'name'  => 'hoot-headblock2',
+		'label' => __( 'Style 2', 'magazine-news-byte' ),
+	) );
+	register_block_style( 'core/heading', array(
+		'name'  => 'hoot-headblock3',
+		'label' => __( 'Style 3', 'magazine-news-byte' ),
+	) );
+}
+
+
+
+/**
+ * Add Stylesheets
+ */
 
 // Load after main stylesheet (and hootkit if available), but before child theme's stylesheet (and child hootkit)
 add_action( 'wp_enqueue_scripts', 'magnb_wpblock_assets', 16 );

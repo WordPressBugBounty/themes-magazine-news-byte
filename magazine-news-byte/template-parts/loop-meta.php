@@ -30,17 +30,20 @@ if ( !is_front_page() && !is_singular() ) :
 
 				<div <?php hoot_attr( 'loop-meta', 'archive', 'hgrid-span-12' ); ?>>
 
-					<?php if ( is_author() ) : ?>
-						<div class="loop-meta-gravatar"><?php
-							$author = get_user_by( 'slug', get_query_var( 'author_name' ) );
-							$gwidth = apply_filters( 'magnb_loop_meta_gravatar', 0 );
-							$gwidth = intval( $gwidth );
-							$gwidth = ( !empty( $gwidth ) ) ? $gwidth : 150;
-							add_filter( 'get_avatar', 'magnb_ns_filter_avatar', 10, 6 );
-							echo get_avatar( $author->ID, $gwidth, '404' );
-							remove_filter( 'get_avatar', 'magnb_ns_filter_avatar', 10, 6 );
-							?></div>
-					<?php endif; ?>
+					<?php if ( is_author() ) :
+						$author = get_user_by( 'slug', get_query_var( 'author_name' ) );
+						if ( $author ) :
+							?><div class="loop-meta-gravatar"><?php
+								$author = get_user_by( 'slug', get_query_var( 'author_name' ) );
+								$gwidth = apply_filters( 'magnb_loop_meta_gravatar', 0 );
+								$gwidth = intval( $gwidth );
+								$gwidth = ( !empty( $gwidth ) ) ? $gwidth : 150;
+								add_filter( 'get_avatar', 'magnb_ns_filter_avatar', 10, 6 );
+								echo get_avatar( $author->ID, $gwidth, '404' );
+								remove_filter( 'get_avatar', 'magnb_ns_filter_avatar', 10, 6 );
+							?></div><?php
+						endif;
+					endif; ?>
 
 					<h1 <?php hoot_attr( 'loop-title', 'archive' ); ?>><?php echo wp_kses_post( get_the_archive_title() ); // Displays title for archive type (multi post) pages. ?></h1>
 
